@@ -13,7 +13,131 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : beaekjoon, c : codeup
 
+//28218번 문제 b
+int list[301][301] = { 0 };
+int main() {
+	int vertical, horizontal, cases, move;
+	cin >> vertical >> horizontal >> move;
+	for (int i = 0; i < horizontal; i++) {
+		string input;
+		cin >> input;
+		for (int j = 0; j < vertical; j++) {
+			if (input[j] == '#')
+				list[i][j] = 1;
+		}
+	}
+	cin >> cases;
+	for (int i = 0; i < cases; i++) {
+		int pos_x, pos_y;
+		cin >> pos_x >> pos_y;
+		for (int j = horizontal - 2, k = 0; j >= 0; j--, k++) {
+			if (k % 2 == 0)
+				list[vertical - 1][j] = 1;
+			else
+				list[vertical - 1][j] = 0;
+		}
+		for (int j = vertical - 2, k = 0; j >= 0; j--, k++) {
+			if (k % 2 == 0)
+				list[j][horizontal - 1] = 1;
+			else
+				list[j][horizontal - 1] = 0;
+		}
+		cout << endl;
+		for (int j = 0; j < vertical; j++) {
+			for (int k = 0; k < horizontal; k++)
+				cout << list[j][k] << " ";
+			cout << endl;
+		}
+	}
+}
 
+////28324번 문제 b
+//int main() {
+//	long long int total;
+//	vector<long long int> list;
+//	cin >> total;
+//	list.resize(total);
+//	for (int i = 0; i < total; i++)
+//		cin >> list[i];
+//	long long int answer = 0, temp = 0;
+//	for (long long int i = total - 1; i >= 0; i--) {
+//		if (list[i] > temp)
+//			temp++;
+//		else
+//			temp = list[i];
+//		answer += temp;
+//	}
+//	cout << answer;
+//}
+
+////3079번 문제 b
+//vector<int> list;
+//int main() {
+//	int num1, num2;
+//	cin >> num1 >> num2;
+//	list.resize(num1);
+//	long long int MAX = 0;
+//	for (int i = 0; i < num1; ++i) {
+//		cin >> list[i];
+//		MAX = max((long long int)list[i], MAX);
+//	}
+//	long long int left = 1, right = MAX * num2;
+//	long long int answer = 0;
+//	while (left <= right) {
+//		long long int mid = (left + right) / 2;
+//		long long int sum = 0;
+//		for (int i = 0; i < num1; ++i)
+//			sum += mid / list[i];
+//		if (sum < num2)
+//			left = mid + 1;
+//		else {
+//			answer = mid;
+//			right = mid - 1;
+//		}
+//	}
+//	cout << answer;
+//}
+
+////1012번 문제 b
+//int num1, num2, pos_total;
+//int list[51][51];
+//int check[51][51];
+//int dx[4] = { 0, 0, 1, -1 };
+//int dy[4] = { 1, -1, 0, 0 };
+//int f(int y, int x) {
+//	if (check[y][x])
+//		return 0;
+//	check[y][x] = 1;
+//	for (int i = 0; i < 4; i++) {
+//		int next_x = x + dx[i];
+//		int next_y = y + dy[i];
+//		if (next_x >= 0 && next_y >= 0 && next_x < num2 && next_y < num1 && list[next_y][next_x])
+//			f(next_y, next_x);
+//	}
+//	return 1;
+//}
+//int main(void) {
+//	int cases;
+//	cin >> cases;
+//	for (int i = 0; i < cases; i++) {
+//		cin >> num2 >> num1 >> pos_total;
+//		for (int j = 0; j < pos_total; j++) {
+//			int x = 0, y = 0;
+//			cin >> x >> y;
+//			list[y][x] = 1;
+//		}
+//		int answer = 0;
+//		for (int j = 0; j < num1; j++) {
+//			for (int k = 0; k < num2; k++) {
+//				if (list[j][k] && !check[j][k]) { 
+//					if (f(j, k))
+//						answer++;
+//				}
+//			}
+//		}
+//		cout << answer;
+//	}
+//}
 
 //----------mixed codeup, baekjoon problems----------
 ////2953번 문제
