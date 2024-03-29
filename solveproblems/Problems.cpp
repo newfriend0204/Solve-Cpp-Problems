@@ -13,43 +13,49 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : beaekjoon, c : codeup
 
-//28218번 문제 b
-int list[301][301] = { 0 };
-int main() {
-	int vertical, horizontal, cases, move;
-	cin >> vertical >> horizontal >> move;
-	for (int i = 0; i < horizontal; i++) {
-		string input;
-		cin >> input;
-		for (int j = 0; j < vertical; j++) {
-			if (input[j] == '#')
-				list[i][j] = 1;
-		}
-	}
-	cin >> cases;
-	for (int i = 0; i < cases; i++) {
-		int pos_x, pos_y;
-		cin >> pos_x >> pos_y;
-		for (int j = horizontal - 2, k = 0; j >= 0; j--, k++) {
-			if (k % 2 == 0)
-				list[vertical - 1][j] = 1;
-			else
-				list[vertical - 1][j] = 0;
-		}
-		for (int j = vertical - 2, k = 0; j >= 0; j--, k++) {
-			if (k % 2 == 0)
-				list[j][horizontal - 1] = 1;
-			else
-				list[j][horizontal - 1] = 0;
-		}
-		cout << endl;
-		for (int j = 0; j < vertical; j++) {
-			for (int k = 0; k < horizontal; k++)
-				cout << list[j][k] << " ";
-			cout << endl;
-		}
-	}
-}
+////28218번 문제 b
+//int num1, num2, moves, cases;
+//string input[301];
+//int check[301][301];
+//int f(int i, int j) {
+//	if (0 <= i && i < num1 && 0 <= j && j < num2) {
+//		if (input[i][j] == '.' && check[i][j] == 0)
+//			return true;
+//	}
+//	return false;
+//}
+//int main() {
+//	cin >> num1 >> num2 >> moves;
+//	for (int i = 0; i < num1; i++)
+//		cin >> input[i];
+//	for (int i = num1 - 1; i >= 0; i--) {
+//		for (int j = num2 - 1; j >= 0; j--) {
+//			if (f(i + 1, j)) {
+//				check[i][j] = 1;
+//				continue;
+//			}
+//			if (f(i, j + 1)) {
+//				check[i][j] = 1;
+//				continue;
+//			}
+//			for (int k = 1; k <= moves; k++) {
+//				if (f(i + k, j + k)) {
+//					check[i][j] = 1;
+//					break;
+//				}
+//			}
+//		}
+//	}
+//	cin >> cases;
+//	for (int i = 0; i < cases; i++) {
+//		int pos_x, pos_y;
+//		cin >> pos_x >> pos_y;
+//		if (check[pos_y - 1][pos_x - 1] == 1)
+//			cout << "First" << endl;
+//		else
+//			cout << "Second" << endl;
+//	}
+//}
 
 ////28324번 문제 b
 //int main() {
