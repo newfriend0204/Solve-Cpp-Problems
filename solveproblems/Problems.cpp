@@ -13,6 +13,8 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : beaekjoon, c : codeup
 
+
+
 ////28218¹ø ¹®Á¦ b
 //int num1, num2, moves, cases;
 //string input[301];
