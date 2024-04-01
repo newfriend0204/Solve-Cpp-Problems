@@ -14,6 +14,31 @@ using namespace std;
 //b : beaekjoon, c : codeup
 
 //28215번 문제 b
+int list[100001][2];
+int main() {
+	int houses, shelters;
+	cin >> houses >> shelters;
+	for (int i = 0; i < houses; i++) {
+		cin >> list[i][0] >> list[i][1];
+	}
+	int min = 99999999;
+	if (shelters == 1) {
+		for (int i = 0; i < houses; i++) {
+			int compare_house[2] = { list[i][0], list[i][1] };
+			int compare = 0;
+			for (int j = 0; j < houses; j++) {
+				int max_distance = 0;
+				max_distance += abs(list[j][0] - compare_house[0]);
+				max_distance += abs(list[j][1] - compare_house[1]);
+				if (max_distance > compare && max_distance != 0)
+					compare = max_distance;
+			}
+			if (compare < min)
+				min = compare;
+		}
+		cout << min;
+	}
+}
 
 ////28218번 문제 b
 //int num1, num2, moves, cases;
