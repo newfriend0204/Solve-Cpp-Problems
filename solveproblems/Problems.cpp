@@ -13,32 +13,66 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : beaekjoon, c : codeup
 
-//28215번 문제 b
-int list[100001][2];
+//28325번 문제 b
+long long int list[250001];
 int main() {
-	int houses, shelters;
-	cin >> houses >> shelters;
-	for (int i = 0; i < houses; i++) {
-		cin >> list[i][0] >> list[i][1];
+	long long int num, answer = 0, compare = 0, sum = 0;
+	cin >> num;
+	for (long long int i = 0; i < num; i++) {
+		cin >> list[i];
+		sum += list[i];
 	}
-	int min = 99999999;
-	if (shelters == 1) {
-		for (int i = 0; i < houses; i++) {
-			int compare_house[2] = { list[i][0], list[i][1] };
-			int compare = 0;
-			for (int j = 0; j < houses; j++) {
-				int max_distance = 0;
-				max_distance += abs(list[j][0] - compare_house[0]);
-				max_distance += abs(list[j][1] - compare_house[1]);
-				if (max_distance > compare && max_distance != 0)
-					compare = max_distance;
-			}
-			if (compare < min)
-				min = compare;
+	if (sum == 0) {
+		cout << num / 2;
+		return 0;
+	}
+	if (num % 2 == 1)
+		compare = 1;
+	if (list[num - 1] != 0)
+		compare = 0;
+	for (long long int i = 0; i < num; i++) {
+		if (list[i] != 0) {
+			answer += list[i];
+			compare = 0;
 		}
-		cout << min;
+		else {
+			if (compare == 0) {
+				answer += 1;
+				compare = 1;
+			}
+			else
+				compare = 0;
+		}
 	}
+	cout << answer;
 }
+
+////28215번 문제 b
+//int list[100001][2];
+//int main() {
+//	int houses, shelters;
+//	cin >> houses >> shelters;
+//	for (int i = 0; i < houses; i++) {
+//		cin >> list[i][0] >> list[i][1];
+//	}
+//	int min = 99999999;
+//	if (shelters == 1) {
+//		for (int i = 0; i < houses; i++) {
+//			int compare_house[2] = { list[i][0], list[i][1] };
+//			int compare = 0;
+//			for (int j = 0; j < houses; j++) {
+//				int max_distance = 0;
+//				max_distance += abs(list[j][0] - compare_house[0]);
+//				max_distance += abs(list[j][1] - compare_house[1]);
+//				if (max_distance > compare && max_distance != 0)
+//					compare = max_distance;
+//			}
+//			if (compare < min)
+//				min = compare;
+//		}
+//		cout << min;
+//	}
+//}
 
 ////28218번 문제 b
 //int num1, num2, moves, cases;
