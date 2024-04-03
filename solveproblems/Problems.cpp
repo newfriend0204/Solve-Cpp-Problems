@@ -13,65 +13,97 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : beaekjoon, c : codeup
 
-//28325번 문제 b
-long long int list[250001];
-int main() {
-	long long int num, answer = 0, compare = 0, sum = 0;
-	cin >> num;
-	for (long long int i = 0; i < num; i++) {
-		cin >> list[i];
-		sum += list[i];
-	}
-	if (sum == 0) {
-		cout << num / 2;
-		return 0;
-	}
-	if (num % 2 == 1)
-		compare = 1;
-	if (list[num - 1] != 0)
-		compare = 0;
-	for (long long int i = 0; i < num; i++) {
-		if (list[i] != 0) {
-			answer += list[i];
-			compare = 0;
-		}
-		else {
-			if (compare == 0) {
-				answer += 1;
-				compare = 1;
-			}
-			else
-				compare = 0;
-		}
-	}
-	cout << answer;
-}
+////28323번 문제 b
+//stack<int> answer;
+//int list[300001];
+//int main() {
+//	int num, compare = 0;
+//	cin >> num;
+//	for (int i = 0; i < num; i++) {
+//		cin >> list[i];
+//	}
+//	answer.push(list[0]);
+//	for (int i = 1; i < num; i++) {
+//		if (answer.top() % 2 != list[i] % 2)
+//			answer.push(list[i]);
+//	}
+//	cout << answer.size() << endl;
+//}
 
 ////28215번 문제 b
-//int list[100001][2];
-//int main() {
-//	int houses, shelters;
-//	cin >> houses >> shelters;
+//int list[100001][2], houses;
+//int f(int shelter1, int shelter2, int shelter3) {
+//	int MAX = 0;
 //	for (int i = 0; i < houses; i++) {
+//		if (i == shelter1 || i == shelter2 || i == shelter3)
+//			continue;
+//		MAX = max(min(min(abs(list[i][0] - list[shelter1][0]) + abs(list[i][1] - list[shelter1][1]),
+//					  abs(list[i][0] - list[shelter2][0]) + abs(list[i][1] - list[shelter2][1])),
+//					  abs(list[i][0] - list[shelter3][0]) + abs(list[i][1] - list[shelter3][1])), MAX);
+//	}
+//	return MAX;
+//}
+//int main() {
+//	int sheleter, answer = 0x7fffffff;
+//	cin >> houses >> sheleter;
+//	for (int i = 0; i < houses; i++)
 //		cin >> list[i][0] >> list[i][1];
-//	}
-//	int min = 99999999;
-//	if (shelters == 1) {
+//	if (sheleter == 1) {
 //		for (int i = 0; i < houses; i++) {
-//			int compare_house[2] = { list[i][0], list[i][1] };
-//			int compare = 0;
-//			for (int j = 0; j < houses; j++) {
-//				int max_distance = 0;
-//				max_distance += abs(list[j][0] - compare_house[0]);
-//				max_distance += abs(list[j][1] - compare_house[1]);
-//				if (max_distance > compare && max_distance != 0)
-//					compare = max_distance;
-//			}
-//			if (compare < min)
-//				min = compare;
+//			answer = min(answer, f(i, i, i));
 //		}
-//		cout << min;
 //	}
+//	else if (sheleter == 2) {
+//		for (int i = 0; i < houses; i++) {
+//			for (int j = 0; j < houses; j++)
+//				answer = min(answer, f(i, i, j));
+//		}
+//	}
+//	else if (sheleter == 3) {
+//		for (int i = 0; i < houses; i++) {
+//			for (int j = 0; j < houses; j++) {
+//				for (int k = 0; k < houses; k++)
+//					answer = min(answer, f(i, j, k));
+//			}
+//		}
+//	}
+//	cout << answer << endl;
+//}
+
+////28325번 문제 b
+//long long int list[500001];
+//int main() {
+//	long long int num, answer = 0, sum = 0, start = 0;
+//	cin >> num;
+//	for (long long int i = 0; i < num; i++) {
+//		cin >> list[i];
+//		sum += list[i];
+//		list[i + num] = list[i];
+//	}
+//	if (sum == 0) {
+//		cout << num / 2;
+//		return 0;
+//	}
+//	for (int i = 0; i < num; i++) {
+//		if (list[i] != 0) {
+//			start = i;
+//			break;
+//		}
+//	}
+//	int total = 0;
+//	for (int i = start; i < num + start; i++) {
+//		if (list[i] != 0) {
+//			answer += list[i];
+//			answer += (total + 1) / 2;
+//			total = 0;
+//		}
+//		else {
+//			total += 1;
+//		}
+//
+//	}
+//	answer += (total + 1) / 2;
+//	cout << answer << endl;
 //}
 
 ////28218번 문제 b
