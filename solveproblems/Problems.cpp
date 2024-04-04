@@ -13,6 +13,9 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : beaekjoon, c : codeup
 
+//19940번 문제 b
+
+
 ////28323번 문제 b
 //stack<int> answer;
 //int list[300001];
