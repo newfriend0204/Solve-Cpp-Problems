@@ -13,8 +13,42 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : beaekjoon, c : codeup
 
-//19940번 문제 b
-
+////19940번 문제 b
+//int main() {
+//	int cases;
+//	cin >> cases;
+//	for (int i = 0; i < cases; i++) {
+//		int input, answer[5] = { 0 };
+//		cin >> input;
+//		answer[0] = input / 60;
+//		input -= (answer[0] * 60);
+//		if (input > 35) {
+//			answer[0]++;
+//			input -= 60;
+//		}
+//		if (input < 0) {
+//			answer[2] = abs(input / 10);
+//			input += answer[2] * 10;
+//			if (input < -5) {
+//				answer[2]++;
+//				input += 10;
+//			}
+//		}
+//		else {
+//			answer[1] = abs(input / 10);
+//			input -= answer[1] * 10;
+//			if (input > 5) {
+//				answer[1]++;
+//				input -= 10;
+//			}
+//		}
+//		if (input > 0)
+//			answer[3] = input;
+//		else
+//			answer[4] = -input;
+//		cout << answer[0] << " " << answer[1] << " " << answer[2] << " " << answer[3] << " " << answer[4] << endl;
+//	}
+//}
 
 ////28323번 문제 b
 //stack<int> answer;
