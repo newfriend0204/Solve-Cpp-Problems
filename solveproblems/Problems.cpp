@@ -13,6 +13,44 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : beaekjoon, c : codeup
 
+////15681번 문제 b
+//vector<int> list[100001];
+//int dp[100001];
+//int visited[100001];
+//void f(int num) {
+//	visited[num] = 1;
+//	for (auto next : list[num])
+//	{
+//		if (!visited[next])
+//		{
+//			f(next);
+//			dp[num] += (dp[next] + 1);
+//		}
+//	}
+//}
+//int main() {
+//	std::ios_base::sync_with_stdio(false);
+//	std::cin.tie(NULL);
+//	std::cout.tie(NULL);
+//	int point, num, cases;
+//	cin >> point >> num >> cases;
+//	
+//	for (int i = 0; i < point - 1; i++) {
+//		int input1, input2;
+//		cin >> input1 >> input2;
+//
+//		list[input1].push_back(input2);
+//		list[input2].push_back(input1);
+//	}
+//	
+//	f(num);
+//	for (int i = 0; i < cases; i++) {
+//		int input;
+//		cin >> input;
+//		cout << dp[input] + 1 << endl;
+//	}
+//}
+
 ////19940번 문제 b
 //int main() {
 //	int cases;
