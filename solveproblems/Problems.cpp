@@ -25,7 +25,7 @@ int f(int num) {
 		if (visited[next_num] == 0)
 			save[f(next_num)]++;
 	}
-	if (save[0] == 0) {	
+	if (save[0] != 0) {	
 		answer++;
 		return 1;
 	}
