@@ -13,35 +13,66 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : beaekjoon, c : codeup
 
-//2533번 문제
-vector <int> list[1000000];
-int visited[1000001];
-int num, answer = 0;
-int f(int num) {
-	visited[num] = 1;
-	int save[2] = { 0, 0 };
-	for (int i = 0; i < list[num].size(); i++) {
-		int next_num = list[num][i];
-		if (visited[next_num] == 0)
-			save[f(next_num)]++;
-	}
-	if (save[0] != 0) {	
-		answer++;
-		return 1;
-	}
-	return 0;
-}
-int main() {
-	cin >> num;
-	for (int i = 0; i < num - 1; i++) {
-		int input1, input2;
-		cin >> input1 >> input2;
-		list[input1].push_back(input2);
-		list[input2].push_back(input1);
-	}
-	f(1);
-	cout << answer;
-}
+////1949번 문제 b
+//vector<int> list[10001];
+//int visited[10001], dp[10001][2], citizen[10001];
+//int num, answer = -1;
+//void f(int num) {
+//	dp[num][0] = citizen[num];
+//	dp[num][1] = 0;
+//	for (int next : list[num]) {
+//		if (visited[num] == next)
+//			continue;
+//		visited[next] = num;
+//		f(next);
+//		dp[num][0] += dp[next][1];
+//		dp[num][1] += max(dp[next][0], dp[next][1]);
+//		answer = max(dp[num][0], dp[num][1]);
+//	}
+//}
+//int main() {
+//	cin >> num;
+//	for (int i = 1; i <= num; i++)
+//		cin >> citizen[i];
+//	for (int i = 0; i < num - 1; i++) {
+//		int input1, input2;
+//		cin >> input1 >> input2;
+//		list[input1].push_back(input2);
+//		list[input2].push_back(input1);
+//	}
+//	f(1);
+//	cout << answer;
+//}
+
+////2533번 문제 b
+//vector <int> list[1000000];
+//int visited[1000001];
+//int num, answer = 0;
+//int f(int num) {
+//	visited[num] = 1;
+//	int save[2] = { 0, 0 };
+//	for (int i = 0; i < list[num].size(); i++) {
+//		int next_num = list[num][i];
+//		if (visited[next_num] == 0)
+//			save[f(next_num)]++;
+//	}
+//	if (save[0] != 0) {	
+//		answer++;
+//		return 1;
+//	}
+//	return 0;
+//}
+//int main() {
+//	cin >> num;
+//	for (int i = 0; i < num - 1; i++) {
+//		int input1, input2;
+//		cin >> input1 >> input2;
+//		list[input1].push_back(input2);
+//		list[input2].push_back(input1);
+//	}
+//	f(1);
+//	cout << answer;
+//}
 
 ////15681번 문제 b
 //vector<int> list[100001];
