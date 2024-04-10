@@ -13,6 +13,8 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : beaekjoon, c : codeup
 
+
+
 ////1949¹ø ¹®Á¦ b
 //vector<int> list[10001];
 //int visited[10001], dp[10001][2], citizen[10001];
