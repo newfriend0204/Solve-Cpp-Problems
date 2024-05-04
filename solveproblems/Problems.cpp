@@ -8,12 +8,197 @@
 #include<cstring>
 #include<cmath>
 #include<string>
-#pragma warning(disable:4996)
+#pragma warning(disable:4996)	
 using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : beaekjoon, c : codeup
 
+////1300번 문제 b
+//int main() {
+//	long long int size, input, answer = 0;
+//	cin >> size >> input;
+//	long long int start = 1, end = size * size;
+//	while (start <= end) {
+//		long long mid = (start + end) / 2;
+//		long long int compare = 0;
+//		for (int i = 1; i <= size; i++) {
+//			compare += min(size, (long long int)mid / i);
+//			if (i > mid)
+//				break;
+//		}
+//		if (compare < input)
+//			start = mid + 1;
+//		else {
+//			answer = mid;
+//			end = mid - 1;
+//		}
+//	}
+//	cout << answer;
+//}
 
+////2156번 문제 b
+//int list[10001] = { 0 }, dp[10001] = { 0 };
+//int main() {
+//	int num;
+//	cin >> num;
+//	for (int i = 0; i < num; i++)
+//		cin >> list[i];
+//	dp[0] = list[0];
+//	dp[1] = list[0] + list[1];
+//	dp[2] = max(dp[1], max(dp[0] + list[2], list[1] + list[2]));
+//	for (int i = 3; i < num; i++) {
+//		dp[i] = max(dp[i - 1], max(dp[i - 3] + list[i - 1] + list[i], dp[i - 2] + list[i]));
+//	}
+//	cout << dp[num - 1];
+//}
+
+////2981번 문제 b
+//int f(int num1, int num2) {
+//	if (num2 == 0)
+//		return num1;
+//	return f(num2, num1 % num2);
+//}
+//int main() {
+//	int num, list[101] = { 0 }, save[101] = { 0 };
+//	cin >> num;
+//	for (int i = 0; i < num; i++) {
+//		cin >> list[i];
+//	}
+//	sort(list, list + num);
+//	for (int i = 0; i < num - 1; i++) {
+//		save[i] = list[i + 1] - list[i];
+//	}
+//	sort(save, save + num - 1);
+//	for (int i = 0; i < num - 2; i++) {
+//		save[i] = f(save[i], save[i + 1]);
+//	}
+//	for (int i = 2; i <= save[num - 3]; i++) {
+//		if (save[num - 3] % i == 0)
+//			cout << i << " ";
+//	}
+//}
+
+////1966번 문제 b
+//int main() {
+//	int count = 0, testcase;
+//	cin >> testcase;
+//	int num1, num2, important;
+//	for (int i = 0; i < testcase; ++i) {
+//		count = 0;
+//		cin >> num1 >> num2;
+//		queue<pair<int, int>> q;
+//		priority_queue<int> pq;
+//		for (int j = 0; j < num1; ++j) {
+//			cin >> important;
+//			q.push({ j, important });
+//			pq.push(important);
+//		}
+//		while (!q.empty()) {
+//			int index = q.front().first;
+//			int value = q.front().second;
+//			q.pop();
+//			if (pq.top() == value) {
+//				pq.pop();
+//				++count;
+//				if (index == num2) {
+//					cout << count << endl;
+//					break;
+//				}
+//			}
+//			else
+//				q.push({ index,value });
+//		}
+//	}
+//}
+
+////1874번 문제 b
+//int main(void) {
+//	vector<char> answer;
+//	stack<int> input;
+//	int num;
+//	int temp = 1;
+//	cin >> num;
+//	for (int i = 0; i < num; i++) {
+//		int input_num;
+//		cin >> input_num;
+//		while (temp <= input_num) {
+//			input.push(temp);
+//			temp++;
+//			answer.push_back('+');
+//		}
+//		if (input.top() == input_num) {
+//			input.pop();
+//			answer.push_back('-');
+//		}
+//		else {
+//			cout << "NO";
+//			return 0;
+//		}
+//	}
+//	for (int i = 0; i < answer.size(); i++)
+//		cout << answer[i] << endl;
+//}
+
+////28216번 문제 b
+//int list[1000001][2];
+//vector<pair<int, int>> v;
+//int com(pair<int,int> p1,pair<int,int> p2)
+//{
+//	return p1.first < p2.first;
+//}
+//int main() {
+//	int num, answer = 0;
+//	cin >> num;
+//	v.resize(num);
+//	for (int i = 0; i < num; i++) {
+//		cin >> v[i].first >> v[i].second;
+//		if (v[i].first > v[i].second) {
+//			int temp = v[i].first;
+//			v[i].first = v[i].second;
+//			v[i].second = temp;
+//		}
+//	}
+//	sort(v.begin(), v.end(), com);
+//	int x1 = 0, x2 = 0;
+//	for (int i = 0; i < num; i++) {
+//		if (x1 == 0 && x2 == 0 && i == 0) {
+//			x1 = v[i].first;
+//			x2 = v[i].second;
+//		}
+//		if (x1 <= v[i].first && v[i].first <= x2)
+//			x2 = v[i].second;
+//		else {
+//			answer += x2 - x1;
+//			x1 = v[i].first;
+//			x2 = v[i].second;
+//		}
+//	}
+//	answer += x2 - x1;
+//	cout << answer;
+//}
+
+////25378번 문제 b
+//int dp[2501], list[2501];
+//int main() {
+//	int num;
+//	cin >> num;
+//	for (int i = 1; i <= num; i++)
+//		cin >> list[i];
+//	for (int i = 1; i <= num; i++) {
+//		int remain = list[i];
+//		dp[i] = max(dp[i], dp[i - 1]);
+//		for (int j = i + 1; j <= num; j++) {
+//			remain = list[j] - remain;
+//			if (remain < 0)
+//				break;
+//			if (remain == 0) {
+//				dp[j] = max(dp[j], dp[i - 1] + 1);
+//				break;
+//			}
+//		}
+//	}
+//	cout << num - dp[num];
+//}
 
 ////1949번 문제 b
 //vector<int> list[10001];
