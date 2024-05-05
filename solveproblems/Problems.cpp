@@ -13,6 +13,11 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : beaekjoon, c : codeup
 
+//3020번 문제 b
+int main() {
+
+}
+
 ////1300번 문제 b
 //int main() {
 //	long long int size, input, answer = 0;
