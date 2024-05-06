@@ -14,9 +14,7 @@ using namespace std;
 //b : beaekjoon, c : codeup
 
 //3020번 문제 b
-int main() {
 
-}
 
 ////1300번 문제 b
 //int main() {
