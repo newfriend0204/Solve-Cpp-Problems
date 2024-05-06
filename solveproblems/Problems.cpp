@@ -13,8 +13,34 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : beaekjoon, c : codeup
 
-//3020번 문제 b
-
+////3020번 문제 b
+//int main() {
+//	vector<int> bottom, top;
+//	int stone, height, answer = 0;
+//	cin >> stone >> height;
+//	int min = stone;
+//	for (int i = 0; i < stone / 2; i++) {
+//		int input1, input2;
+//		cin >> input1 >> input2;
+//		bottom.push_back(input1);
+//		top.push_back(height - input2);
+//	}
+//	sort(bottom.begin(), bottom.end());
+//	sort(top.begin(), top.end());
+//	for (int i = 0; i < height; i++) {
+//		int temp = lower_bound(bottom.begin(), bottom.end(), i) - bottom.begin();
+//		int count = stone / 2 - temp;
+//		temp = lower_bound(top.begin(), top.end(), i) - top.begin();
+//		count += temp;
+//		if (count < min) {
+//			min = count;
+//			answer = 1;
+//		}
+//		else if (count == min)
+//			answer++;
+//	}
+//	cout << min << " " << answer;
+//}
 
 ////1300번 문제 b
 //int main() {
