@@ -13,6 +13,43 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : beaekjoon, c : codeup
 
+
+
+////7795번 문제 b
+//int main() {
+//	int testcases;
+//	cin >> testcases;
+//	for (int i = 0; i < testcases; i++) {
+//		vector<int> dp, a, b;
+//		int total_a, total_b;
+//		cin >> total_a >> total_b;
+//		dp.resize(total_a);
+//		a.resize(total_a);
+//		b.resize(total_b);
+//		for (int i = 0; i < total_a; i++)
+//			cin >> a[i];
+//		for (int i = 0; i < total_b; i++)
+//			cin >> b[i];
+//		sort(a.begin(), a.end());
+//		sort(b.begin(), b.end());
+//		for (int i = 0; i < total_a; i++) {
+//			int count = 0;
+//			for (int j = 0; j < total_b; j++) {
+//				if (a[i] > b[j])
+//					count++;
+//				else
+//					break;
+//			}
+//			dp[i] = count;
+//		}
+//		int answer = 0;
+//		for (int i = 0; i < total_a; i++) {
+//			answer += dp[i];
+//		}
+//		cout << answer << endl;
+//	}
+//}
+
 ////3020번 문제 b
 //int main() {
 //	vector<int> bottom, top;
