@@ -13,6 +13,41 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : beaekjoon, c : codeup
 
+////1167번 문제 b
+//int visit[100001], answer = 0, save = 0;
+//vector<pair<int, int>> list[100001];
+//void f(int node, int distance) {
+//	visit[node] = 1;
+//	if (answer < distance) {
+//		answer = distance;
+//		save = node;
+//	}
+//	for (auto& i : list[node]) {
+//		if (visit[i.first] == 0)
+//			f(i.first, distance + i.second);
+//	}
+//}
+//int main() {
+//	int num;
+//	cin >> num;
+//	for (int i = 0; i < num; i++) {
+//		int input;
+//		cin >> input;
+//		while (true) {
+//			int next_node, distance;
+//			cin >> next_node;
+//			if (next_node == -1)
+//				break;
+//			cin >> distance;
+//			list[input].emplace_back(next_node, distance);
+//		}
+//	}
+//	f(1, 0);
+//	memset(visit, 0, sizeof(visit));
+//	f(save, 0);
+//	cout << answer;
+//}
+
 ////3020번 문제 b
 //int main() {
 //	vector<int> bottom, top;
