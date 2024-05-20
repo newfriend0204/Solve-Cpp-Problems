@@ -11,9 +11,262 @@
 #pragma warning(disable:4996)	
 using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
-//b : beaekjoon, c : codeup
+//b : baekjoon, c : codeup
 
+////11050번 문제 b
+//int f(int num) {
+//	int answer = 1;
+//	for (int i = num; i > 0; i--)
+//		answer *= i;
+//	return answer;
+//}
+//int main() {
+//	int input1, input2;
+//	cin >> input1 >> input2;
+//	cout << f(input1) / (f(input2) * f(input1 - input2));
+//}
 
+////2581번 문제 b
+//int main() {
+//	int input1, input2, sum = 0, min = -1, count = 0;
+//	cin >> input1 >> input2;
+//	for (int i = input1; i <= input2; i++) {
+//		for (int j = 1; j <= i; j++) {
+//			if (i % j == 0)
+//				count++;
+//		}
+//		if (count == 2) {
+//			if (min == -1)
+//				min = i;
+//			sum += i;
+//		}
+//		count = 0;
+//	}
+//	if (min == -1)
+//		cout << -1;
+//	else
+//		cout << sum << endl << min;
+//}
+
+////2252번 문제 b
+//queue<int> q,temp;
+//vector<int> save[32001], answer;
+//int degree[32001];
+//int main() {
+//	int	N, M;
+//	cin >> N >> M;
+//	for (int i = 0; i < M; i++) {
+//		int input1, input2;
+//		cin >> input1 >> input2;
+//		save[input1].push_back(input2);
+//		degree[input2]++;
+//	}
+//	for (int i = 1; i <= N; i++) {
+//		if (degree[i] == 0)
+//			temp.push(i);
+//	}
+//	int size = temp.size();
+//	for (int i = 0; i < size; i++)
+//	{
+//		int curr = temp.front();
+//		temp.pop();
+//		q.push(curr);
+//		while (!q.empty())
+//		{
+//			int next_node = q.front();
+//			answer.push_back(next_node);
+//			q.pop();
+//			for (auto next : save[next_node])
+//			{
+//				degree[next]--;
+//				if (degree[next] == 0)
+//				{
+//					q.push(next);
+//
+//				}
+//			}
+//		}
+//	}
+//	for (auto i : answer)
+//		cout << i << " ";
+//}
+
+////17611번 문제 b
+//int num, answer_x[500001], answer_y[500001];
+//vector<pair<int, int>> list;
+//int main() {
+//	cin >> num;
+//	for (int i = 0; i < num; i++) {
+//		int input1, input2;
+//		cin >> input1 >> input2;
+//		input1 += 500000;
+//		input2 += 500000;
+//		list.push_back({input1, input2});
+//	}
+//	for (int i = 0; i < num; i++) {
+//		int cur_x = list[i].first;
+//		int cur_y = list[i].second;
+//		int next_x = list[(i + 1) % num].first;
+//		int next_y = list[(i + 1) % num].second;
+//		if (cur_x == next_x) {
+//			int min_y = min(cur_y, next_y);
+//			int max_y = max(cur_y, next_y);
+//			answer_y[min_y]++;
+//			answer_y[max_y]--;
+//		}
+//		else {
+//			int min_x = min(cur_x, next_x);
+//			int max_x = max(cur_x, next_x);
+//			answer_x[min_x]++;
+//			answer_x[max_x]--;
+//		}
+//	}
+//	for (int i = 1; i < 100010; i++) {
+//		answer_x[i] += answer_x[i - 1];
+//		answer_y[i] += answer_y[i - 1];
+//	}
+//	int answer = 0;
+//	for (int i = 1; i < 100010; i++)
+//		answer = max(max(answer_x[i], answer_y[i]), answer);
+//	cout << answer;
+//}
+
+////1939번 문제 b
+//vector<pair<int, int>> node[100001];
+//queue<pair<int, int>> q;
+//int visit[1000001];
+//int total_island, total_bridge;
+//int check()
+//int main() {
+//	cin >> total_island >> total_bridge;
+//	int max_weight = 0, answer = 0;
+//	for (int i = 0; i < total_bridge; i++) {
+//		int input1, input2, weight;
+//		cin >> input1 >> input2 >> weight;
+//		if (max_weight < weight)
+//			max_weight = weight;
+//		int che = 0;
+//		for (auto data : node[input1])
+//		{
+//			int no = data.first;
+//			int w = data.second;
+//			if (no == input2)
+//			{
+//				if(w<weight)
+//					node
+//			}
+//		}
+//		node[input1].push_back({ input2, weight });
+//	}
+//	int first_factory, second_factory;
+//	cin >> first_factory >> second_factory;
+//	int left = 0;
+//	int right = max_weight;
+//	while (left <= right) {
+//		int mid = (left + right) / 2, passed = 1;
+//		q.push({ first_factory, mid });
+//		while (!q.empty()) {
+//			int cur_node = q.front().first;
+//			if (cur_node == second_factory) {
+//				passed = 0;
+//				break;
+//			}
+//			q.pop();
+//			for (int i = 0; i < node[cur_node].size(); i++) {
+//				int next_node = node[cur_node][i].first;
+//				int next_save = node[cur_node][i].second;
+//				if (visit[next_node] == 0) {
+//					visit[next_node] = 1;
+//					if (next_save >= mid) {
+//						q.push({ next_node, next_save });
+//					}
+//				}
+//			}
+//		}
+//		if (passed == 0) {
+//			cout << mid << endl;
+//			answer = mid;
+//			left = mid + 1;
+//		}
+//		else
+//			right = mid - 1;
+//	}
+//	cout << answer;
+//}
+
+////17070번 문제 b
+//int dp[17][17][3];
+//int list[17][17];
+//int main() {
+//	int num;
+//	cin >> num;
+//	for (int i = 0; i < num; i++) {
+//		for (int j = 0; j < num; j++)
+//			cin >> list[i][j];
+//	}
+//	dp[0][1][0] = 1;
+//	for (int i = 0; i < num; i++) {
+//		for (int j = 1; j < num; j++) {
+//			if (list[i][j] == 1)
+//				continue;
+//			dp[i][j][0] += dp[i][j - 1][0] + dp[i][j - 1][2];
+//			if (i - 1 < 0)
+//				continue;
+//			dp[i][j][1] += dp[i - 1][j][1] + dp[i - 1][j][2];
+//			if (list[i - 1][j] || list[i][j - 1])
+//				continue;
+//			dp[i][j][2] += dp[i - 1][j - 1][0] + dp[i - 1][j - 1][1] + dp[i - 1][j - 1][2];
+//		}
+//	}
+//	int answer = 0;
+//	for (int i = 0; i < 3; i++)
+//		answer += dp[num - 1][num - 1][i];
+//	cout << answer;
+//}
+
+////1021번 문제 b
+//int main() {
+//	deque<int> list;
+//	int size, pop_count;
+//	cin >> size >> pop_count;
+//	for (int i = 1; i <= size; i++) {
+//		list.push_back(i);
+//	}
+//	int left = 0, right = 0, answer = 0;
+//	while (pop_count--) {
+//		int input;
+//		cin >> input;
+//		for (int i = 0; i < list.size(); i++) {
+//			if (list[i] == input) {
+//				left = i;
+//				right = list.size() - i;
+//				break;
+//			}
+//		}
+//		if (left <= right) {
+//			while (true) {
+//				if (list.front() == input)
+//					break;
+//				list.push_back(list.front());
+//				list.pop_front();
+//				answer++;
+//			}
+//			list.pop_front();
+//		}
+//		else {
+//			answer++;
+//			while (true) {
+//				if (list.back() == input)
+//					break;
+//				list.push_front(list.back());
+//				list.pop_back();
+//				answer++;
+//			}
+//			list.pop_back();
+//		}
+//	}
+//	cout << answer;
+//}
 
 ////1167번 문제 b
 //int visit[100001], answer = 0, save = 0;
