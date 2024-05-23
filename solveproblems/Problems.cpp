@@ -13,6 +13,65 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : baekjoon, c : codeup
 
+////3079번 문제 b
+//int main() {
+//	unsigned long long num1, num2;
+//	unsigned long long list[100001];
+//	cin >> num1 >> num2;
+//	for (int i = 0; i < num1; i++)
+//		cin >> list[i];
+//	sort(list, list + num1);
+//	unsigned long long top = num2 * list[0],  bottom = 1;
+//	unsigned long long mid, answer = 0, people;
+//	while (top >= bottom) {
+//		people = 0;
+//		mid = (top + bottom) / 2;
+//		for (int i = 0; i < num1; i++)
+//			people += mid / list[i];
+//		if (people >= num2) {
+//			if (answer > mid || answer == 0)
+//				answer = mid;
+//			top = mid - 1;
+//		}
+//		else
+//			bottom = mid + 1;
+//	}
+//	cout << answer;
+//}
+
+////2981번 문제 b
+//int f(int a, int b) {
+//	if (a % b == 0) {
+//		return b;
+//	}
+//	return f(b, a % b);
+//}
+//int main() {
+//	int num;
+//	cin >> num;
+//	vector<int> v;
+//	vector<int> result;
+//	for (int i = 0; i < num; i++) {
+//		int num;
+//		cin >> num;
+//		v.push_back(num);
+//	}
+//	int gcd = abs(v[1] - v[0]);
+//	for (int i = 2; i < v.size(); i++)
+//		gcd = f(gcd, abs(v[i] - v[i - 1]));
+//	for (int i = 2; i * i <= gcd; i++) {
+//		if (gcd % i == 0) {
+//			result.push_back(i);
+//			if (gcd / i != i)
+//				result.push_back(gcd / i);
+//		}
+//	}
+//	result.push_back(gcd);
+//	sort(result.begin(), result.end());
+//	for (int i = 0; i < result.size(); i++)
+//		cout << result[i] << " ";
+//}
+
 ////11050번 문제 b
 //int f(int num) {
 //	int answer = 1;
