@@ -8,10 +8,64 @@
 #include<cstring>
 #include<cmath>
 #include<string>
+#include<map>
 #pragma warning(disable:4996)	
 using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : baekjoon, c : codeup
+
+////17619번 문제 b
+//typedef struct pos {
+//	int x1, x2, idx;
+//};
+//int logs, cases, answer, x1, x2, y;
+//int parent[100001], list[100001];
+//vector<pos> v;
+//bool cmp(pos a, pos b) {
+//	return a.x1 < b.x1;
+//}
+//int find_parent(int x) {
+//	if (x == parent[x])
+//		return x;
+//	return parent[x] = find_parent(parent[x]);
+//}
+//void find(int x, int y) {
+//	x = find_parent(x);
+//	y = find_parent(y);
+//	if (x == y)
+//		return;
+//	if (list[x] < list[y])
+//		swap(x, y);
+//	parent[y] = x;
+//	list[x] += list[y];
+//}
+//int main() {
+//	ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+//	cin >> logs >> cases;
+//	v.push_back({ 0,0,0 });
+//	for (int i = 1; i <= logs; i++) {
+//		cin >> x1 >> x2 >> y;
+//		v.push_back({ x1,x2,i });
+//		parent[i] = i;
+//		list[i] = 1;
+//	}
+//	sort(v.begin(), v.end(), cmp);
+//	for (int i = 1, j = 2; i <= logs && j <= logs;) {
+//		if (v[j].x1 <= v[i].x2) {
+//			find(v[i].idx, v[j].idx);
+//			j++;
+//		}
+//		else
+//			i++;
+//	}
+//	for (int i = 0; i < cases; i++) {
+//		cin >> x1 >> x2;
+//		if (find_parent(x1) == find_parent(x2))
+//			cout << "1" << "\n";
+//		else 
+//			cout << "0" << "\n";
+//	}
+//}
 
 ////3079번 문제 b
 //int main() {
