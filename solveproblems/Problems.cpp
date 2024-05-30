@@ -14,6 +14,97 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : baekjoon, c : codeup
 
+////1753번 문제 b
+//#define INF 1000000
+//int d[20001];
+//vector<pair<int, int> > edge[300001];
+//void f(int start_node) {
+//	d[start_node] = 0;
+//	priority_queue<pair<int, int> > pq;
+//	pq.push(make_pair(0, start_node));
+//	while (!pq.empty()) {
+//		int current = pq.top().second;
+//		int start_to_current_distance = -pq.top().first;
+//		pq.pop();
+//		if (d[current] < start_to_current_distance) {
+//			continue;
+//		}
+//		for (int i = 0; i < edge[current].size(); ++i) {
+//			int next = edge[current][i].second;
+//			int start_to_next_distance = start_to_current_distance + edge[current][i].first;
+//			if (d[next] > start_to_next_distance) {
+//				d[next] = start_to_next_distance;
+//				pq.push(make_pair(-start_to_next_distance, next));
+//			}
+//		}
+//	}
+//}
+//int main() {
+//	int v, e;
+//	cin >> v >> e;
+//	int start_node;
+//	cin >> start_node;
+//	for (int i = 1; i < v + 1; ++i) {
+//		d[i] = INF;
+//	}
+//	for (int i = 0; i < e; ++i) {
+//		int start, end, cost;
+//		cin >> start >> end >> cost;
+//		edge[start].push_back(make_pair(cost, end));
+//	}
+//	f(start_node);
+//	for (int i = 1; i < v + 1; ++i) {
+//		if (d[i] == INF) {
+//			cout << "INF" << "\n";
+//		}
+//		else {
+//			cout << d[i] << "\n";
+//		}
+//	}
+//}
+
+////1012번 문제 b
+//int dy[4] = { 1,-1,0,0 };
+//int dx[4] = { 0,0,1,-1 };
+//int M, N, K;
+//int arr[50][50] = { 0 };
+//int visited[50][50] = { 0 };
+//void dfs(int y, int x) {
+//	for (int i = 0; i < 4; i++) {
+//		int ny = y + dy[i];
+//		int nx = x + dx[i];
+//		if (ny < 0 || ny >= N || nx < 0 || nx >= M)
+//			continue;
+//		if (arr[ny][nx] && !visited[ny][nx]) {
+//			visited[ny][nx]++;
+//			dfs(ny, nx);
+//		}
+//	}
+//}
+//
+//int main() {
+//	int T, x, y;
+//	scanf("%d", &T);
+//	for (int testCase = 0; testCase < T; testCase++) {
+//		scanf("%d %d %d", &M, &N, &K);
+//		memset(arr, 0, sizeof(arr));
+//		memset(visited, 0, sizeof(visited));
+//		int answer = 0;
+//		for (int i = 0; i < K; i++) {
+//			scanf("%d %d", &x, &y);
+//			arr[y][x] = 1;
+//		}
+//		for (int i = 0; i < N; i++)
+//			for (int j = 0; j < M; j++)
+//				if (arr[i][j] && !visited[i][j]) {
+//					answer++;
+//					visited[i][j]++;
+//					dfs(i, j);
+//				}
+//		printf("%d\n", answer);
+//	}
+//}
+
 ////17619번 문제 b
 //typedef struct pos {
 //	int x1, x2, idx;
