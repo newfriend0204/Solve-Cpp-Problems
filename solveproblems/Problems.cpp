@@ -14,6 +14,67 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : baekjoon, c : codeup
 
+////1920번 문제 b
+//int num, cases, list[1000000];
+//int temp;
+//void f(int x) {
+//	int left = 0, mid = 0, right = num - 1;
+//	while (left <= right) {
+//		mid = (left + right) / 2;
+//		if (list[mid] == x) {
+//			cout << 1 << "\n";
+//			return;
+//		}
+//		else if (list[mid] > x)
+//			right = mid - 1;
+//		else
+//			left = mid + 1;
+//	}
+//	cout << 0 << "\n";
+//	return;
+//}
+//int main() {
+//	ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+//	cin >> num;
+//	for (int i = 0; i < num; i++) {
+//		cin >> list[i];
+//	}
+//	sort(list, list + num);
+//	cin >> cases;
+//	int input;
+//	for (int i = 0; i < cases; i++) {
+//		cin >> input;
+//		f(input);
+//	}
+//}
+
+////1874번 문제 b
+//int main() {
+//	stack<int> s;
+//	vector<char> result;
+//	int count = 1, num;
+//	cin >> num;
+//	for (int i = 0; i < num; i++) {
+//		int input;
+//		cin >> input;
+//		while (count <= input) {
+//			s.push(count);
+//			count += 1;
+//			result.push_back('+');
+//		}
+//		if (s.top() == input) {
+//			s.pop();
+//			result.push_back('-');
+//		}
+//		else {
+//			cout << "NO";
+//			return 0;
+//		}
+//	}
+//	for (int i = 0; i < result.size(); i++)
+//		cout << result[i] << "\n";
+//}
+
 ////1753번 문제 b
 //#define INF 1000000
 //int d[20001];
