@@ -14,6 +14,82 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : baekjoon, c : codeup
 
+////2170번 문제 b
+//vector<pair<int, int>> list;
+//int main() {
+//	ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+//	int num;
+//	cin >> num;
+//	for (int i = 0; i < num; i++) {
+//		int input1, input2;
+//		cin >> input1 >> input2;
+//		list.push_back(make_pair(input1, input2));
+//	}
+//	sort(list.begin(), list.end());
+//	int answer = 0;
+//	int start = list[0].first, end = list[0].second;
+//	for (int i = 1; i < num; i++) {
+//		int save_start = list[i].first, save_end = list[i].second;
+//		if (end >= save_start) {
+//			if (end < save_end)
+//				end = save_end;
+//		}
+//		else {
+//			answer += end - start;
+//			start = save_start, end = save_end;
+//		}
+//	}
+//	answer += end - start;
+//	cout << answer << "\n";
+//}
+
+////1939번 문제 b
+//vector<pair<int, int>> bridge[10001];
+//bool f(int mid, int num, int input1, int input2) {
+//	queue<int> q;
+//	vector<int> visited(num + 1);
+//	visited[input1] = 1;
+//	q.push(input1);
+//	while (!q.empty()) {
+//		int pos = q.front();
+//		q.pop();
+//		if (pos == input2)
+//			return true;
+//		for (int i = 0; i < bridge[pos].size(); i++) {
+//			int w = bridge[pos][i].first;
+//			int next_pos = bridge[pos][i].second;
+//			if (!visited[next_pos] && w >= mid) {
+//				visited[next_pos] = 1;
+//				q.push(next_pos);
+//			}
+//		}
+//	}
+//	return false;
+//}
+//int main(void) {
+//	int inform, bridges;
+//	int start, end, max_weight = 0, mid, weight;
+//	cin >> inform >> bridges;
+//	while (bridges--) {
+//		cin >> start >> end >> weight;
+//		bridge[start].push_back({ weight,end });
+//		bridge[end].push_back({ weight,start });
+//		max_weight = max(weight, max_weight);
+//	}
+//	int input1, input2;
+//	cin >> input1 >> input2;
+//	start = 0;
+//	end = max_weight;
+//	while (start <= end) {
+//		mid = (start + end) / 2;
+//		if (f(mid, inform, input1, input2))
+//			start = mid + 1;
+//		else
+//			end = mid - 1;
+//	}
+//	cout << end;
+//}
+
 ////1920번 문제 b
 //int num, cases, list[1000000];
 //int temp;
