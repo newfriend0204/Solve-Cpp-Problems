@@ -9,10 +9,34 @@
 #include<cmath>
 #include<string>
 #include<map>
-#pragma warning(disable:4996)	
+#pragma warning(disable:4996)
 using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : baekjoon, c : codeup
+
+////2309번 문제 b
+//int all[10];
+//int dwarf[8], check = 0;
+//void f(int search = 0, int sum = 0, int select = 0) {
+//	if (search > 9 || sum > 100 || select > 7)
+//		return;
+//	if (search == 9 && sum == 100 && select == 7 && check == 0) {
+//		for (int i = 0; i < 7; i++) {
+//			cout << dwarf[i] << endl;
+//		}
+//		check++;
+//		return;
+//	}
+//	dwarf[select] = all[search];
+//	f(search + 1, sum + all[search], select + 1);
+//	f(search + 1, sum, select);
+//}
+//int main() {
+//	for (int i = 0; i < 9; i++)
+//		cin >> all[i];
+//	sort(all, all + 9);
+//	f();
+//}
 
 ////2170번 문제 b
 //vector<pair<int, int>> list;
@@ -2476,7 +2500,7 @@ using namespace std;
 //	}
 //	printf("%d:%d", num1 / max, num2 / max);
 //}
-//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ여기까지가 문자열mmmmㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ여기까지가 문자열ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 // 
 //8595번 문제
 //char input[5000001];
