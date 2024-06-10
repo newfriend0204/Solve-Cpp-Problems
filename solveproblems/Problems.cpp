@@ -14,6 +14,27 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : baekjoon, c : codeup
 
+////11650번 문제 b
+//bool compare(pair<int, int> p1, pair<int, int> p2) {
+//	if (p1.first == p2.first)
+//		return p1.second < p2.second;
+//	else
+//		return p1.first < p2.first;
+//}
+//int main() {
+//	int num;
+//	cin >> num;
+//	vector<pair<int, int>> v;
+//	for (int i = 0; i < num; i++) {
+//		int input1, input2;
+//		cin >> input1 >> input2;
+//		v.push_back(make_pair(input1, input2));
+//	}
+//	sort(v.begin(), v.end(), compare);
+//	for (int i = 0; i < num; i++)
+//		cout << v[i].first << " " << v[i].second << "\n";
+//}
+
 ////2309번 문제 b
 //int all[10];
 //int dwarf[8], check = 0;
