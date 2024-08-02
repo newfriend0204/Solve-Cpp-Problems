@@ -14,6 +14,152 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : baekjoon, c : codeup
 
+////3036번 문제 b
+//int f(int num1, int num2) {
+//	if (num2 == 0)
+//		return num1;
+//	else
+//		return f(num2, num1 % num2);
+//}
+//int main() {
+//	int n;
+//	int radius[101];
+//	cin >> n;
+//	for (int i = 0; i < n; i++)
+//		cin >> radius[i];
+//	for (int i = 1; i < n; i++) {
+//		int gcd = f(radius[0], radius[i]);
+//		if (gcd == 1)
+//			cout << radius[0] << "/" << radius[i] << endl;
+//		else
+//			cout << radius[0] / gcd << "/" << radius[i] / gcd << endl;
+//	}
+//}
+
+////18258번 문제 b
+//int main(void) {
+//	ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+//	int N;
+//	queue<int> Q;
+//	string input_comment;
+//	cin >> N;
+//	for (int i = 0; i < N; i++) {
+//		cin >> input_comment;
+//		if (input_comment == "push") {
+//			int num;
+//			cin >> num;
+//			Q.push(num);
+//		}
+//		else if (input_comment == "pop") {
+//			if (Q.empty()) {
+//				cout << -1 << '\n';
+//			}
+//			else {
+//				cout << Q.front() << '\n';
+//				Q.pop();
+//			}
+//		}
+//		else if (input_comment == "size") {
+//			cout << Q.size() << '\n';
+//		}
+//		else if (input_comment == "empty") {
+//			cout << (int)Q.empty() << '\n';
+//		}
+//		else if (input_comment == "front") {
+//			if (Q.empty()) {
+//				cout << -1 << '\n';
+//			}
+//			else {
+//				cout << Q.front() << '\n';
+//			}
+//		}
+//		else if (input_comment == "back") {
+//			if (Q.empty()) {
+//				cout << -1 << '\n';
+//			}
+//			else {
+//				cout << Q.back() << '\n';
+//			}
+//		}
+//	}
+//}
+
+////2630번 문제 b
+//int list[129][129];
+//int answer1 = 0, answer2 = 0;
+//void f(int x, int y, int size) {
+//	int temp = 0;
+//	for (int i = x; i < x + size; i++) {
+//		for (int j = y; j < y + size; j++) {
+//			if (list[i][j]) {
+//				temp++;
+//			}
+//		}
+//	}
+//	if (temp == 0)
+//		answer1++;
+//	else if (temp == size * size)
+//		answer2++;
+//	else {
+//		f(x, y, size / 2);
+//		f(x, y + size / 2, size / 2);
+//		f(x + size / 2, y, size / 2);
+//		f(x + size / 2, y + size / 2, size / 2);
+//	}
+//	return;
+//}
+//
+//int main() {
+//	int n;
+//	cin >> n;
+//	for (int i = 0; i < n; i++) {
+//		for (int j = 0; j < n; j++) {
+//			cin >> list[i][j];
+//		}
+//	}
+//	f(0, 0, n);
+//	cout << answer1 << endl << answer2;
+//}
+
+////1717번 문제 b
+//int parents[1000001];
+//int n, m;
+//void initParent(){
+//	for (int i = 1; i <= n; i++)
+//		parents[i] = i;
+//}
+//int getParent(int node) {
+//	if (parents[node] == node)
+//		return node;
+//	return parents[node] = getParent(parents[node]);
+//}
+//void m_union(int node1, int node2) {
+//	node1 = getParent(node1);
+//	node2 = getParent(node2);
+//	if (node1 > node2)
+//		parents[node1] = node2;
+//	else
+//		parents[node2] = node1;
+//}
+//int main() {
+//	ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+//	cin >> n >> m;
+//	initParent();
+//	for (int i = 0; i < m; i++) {
+//		int find, a, b;
+//		cin >> find >> a >> b;
+//		if (find == 0) {
+//			m_union(a, b);
+//		}
+//		if (find == 1) {
+//			if (getParent(a) == getParent(b))
+//				cout << "YES" << "\n";
+//			else
+//				cout << "NO" << "\n";
+//		}
+//	}
+//}
+
 ////11650번 문제 b
 //bool compare(pair<int, int> p1, pair<int, int> p2) {
 //	if (p1.first == p2.first)
