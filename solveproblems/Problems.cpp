@@ -12,100 +12,105 @@
 using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : baekjoon, c : codeup
-#define MAX 100001
-//11438번 문제 b
 
-int n;
-vector<int> tree[MAX];
-int parents[MAX][20];
-int depth[MAX];
-int visited[MAX];
+////20040번 문제 b
+//int table[50000001];
+//int totalNode, progress, answer;
+//int MyParent(int node) {
+//	if (node == table[node])
+//		return node;
+//	return table[node] = MyParent(table[node]);
+//}
+//void Myunion(int node1, int node2) {
+//	node1 = MyParent(node1);
+//	node2 = MyParent(node2);
+//	if (node1 > node2)
+//		table[node1] = node2;
+//	else
+//		table[node2] = node1;
+//}
+//int main() {
+//	cin >> totalNode >> progress;
+//	for (int i = 1; i <= totalNode; i++)
+//		table[i] = i;
+//	for (int i = 0; i < progress; i++) {
+//		int input1, input2;
+//		cin >> input1 >> input2;
+//		if (MyParent(input1) != MyParent(input2))
+//			Myunion(input1, input2);
+//		else {
+//			answer = i + 1;
+//			break;
+//		}
+//	}
+//	cout << answer;
+//}
 
-int query;
-
-void dfs(int curr)
-{
-	visited[curr] = 1;
-	for (auto next : tree[curr])
-	{
-		if (!visited[next])
-		{
-			depth[next] = depth[curr] + 1;
-			parents[next][0] = curr;
-			dfs(next);
-		}
-	}
-}
-void parentSetting()
-{
-	for (int i = 1; i < 20; i++)
-	{
-		for (int node = 1; node <= n; node++)
-		{
-			parents[node][i] = parents[parents[node][i - 1]][i - 1];
-		}
-	}
-}
-
-int lca(int node1, int node2)
-{
-	if (node1 == node2)return node1;
-	if (depth[node1] > depth[node2])swap(node1, node2);
-	if (depth[node1] != depth[node2])
-	{
-		for (int i = 20; i >= 0; i--)
-		{
-			if (depth[node1] <= depth[parents[node2][i]])
-			{
-				node2 = parents[node2][i];
-			}
-		}
-	}
-	int lca = node1;
-	if (node1 != node2)
-	{
-		for (int i = 20; i >= 0; i--)
-		{
-			if (node1 != node2 && depth[node1]>=0)
-			{
-				node1 = parents[node1][i];
-				node2 = parents[node2][i];
-			}
-			lca = node1;
-		}
-	}
-	return lca;
-}
-int main() {
-	cin >> n;
-	for (int i = 0; i < n - 1; i++)
-	{
-		int node1, node2;
-		cin >> node1 >> node2;
-		tree[node1].push_back(node2);
-		tree[node2].push_back(node1);
-	}
-	dfs(1);
-	parentSetting();
-	cin >> query;
-	for (int i = 0; i < query; i++)
-	{
-		int x, y;
-		cin >> x >> y;
-		cout << lca(x, y) << "\n";
-	}
-	/*for (int i = 1; i <= n; i++)
-	{
-		cout << "node " << i << ":";
-		for (int j = 0; j < 20; j++)
-		{
-			cout << parents[i][j];
-		}
-		cout << "\n";
-	}*/
-
-
-}
+////11438번 문제 b
+//#define MAX 100001
+//int n;
+//vector<int> tree[MAX];
+//int parents[MAX][20];
+//int depth[MAX];
+//int visited[MAX];
+//int query;
+//void dfs(int curr) {
+//	visited[curr] = 1;
+//	for (auto next : tree[curr]) {
+//		if (!visited[next]) {
+//			depth[next] = depth[curr] + 1;
+//			parents[next][0] = curr;
+//			dfs(next);
+//		}
+//	}
+//}
+//void parentSetting() {
+//	for (int i = 1; i < 20; i++) {
+//		for (int node = 1; node <= n; node++)
+//			parents[node][i] = parents[parents[node][i - 1]][i - 1];
+//	}
+//}
+//int lca(int node1, int node2) {
+//	if (node1 == node2)
+//		return node1;
+//	if (depth[node1] > depth[node2])
+//		swap(node1, node2);
+//	if (depth[node1] != depth[node2]) {
+//		for (int i = 19; i >= 0; i--) {
+//			if (depth[node1] <= depth[parents[node2][i]])
+//				node2 = parents[node2][i];
+//		}
+//	}
+//	int lca = node1;
+//	if (node1 != node2) {
+//		for (int i = 19; i >= 0; i--) {
+//			if (parents[node1][i] != parents[node2][i]) {
+//				node1 = parents[node1][i];
+//				node2 = parents[node2][i];
+//			}
+//			lca = parents[node1][i];
+//		}
+//	}
+//	return lca;
+//}
+//int main() {
+//	//ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+//	cin >> n;
+//	for (int i = 0; i < n - 1; i++) {
+//		int node1, node2;
+//		cin >> node1 >> node2;
+//		tree[node1].push_back(node2);
+//		tree[node2].push_back(node1);
+//	}
+//	dfs(1);
+//	parentSetting();
+//	cin >> query;
+//	for (int i = 0; i < query; i++) {
+//		int x, y;
+//		cin >> x >> y;
+//		cout << lca(x, y) << "\n";
+//	}
+//}
 
 ////14003번 문제 b
 //int main() {
