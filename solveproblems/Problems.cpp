@@ -9,10 +9,378 @@
 #include<cmath>
 #include<string>
 #include<map>
-#pragma warning(disable:4996)
 using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : baekjoon, c : codeup
+#define MAX 100001
+//11438번 문제 b
+
+int n;
+vector<int> tree[MAX];
+int parents[MAX][20];
+int depth[MAX];
+int visited[MAX];
+
+int query;
+
+void dfs(int curr)
+{
+	visited[curr] = 1;
+	for (auto next : tree[curr])
+	{
+		if (!visited[next])
+		{
+			depth[next] = depth[curr] + 1;
+			parents[next][0] = curr;
+			dfs(next);
+		}
+	}
+}
+void parentSetting()
+{
+	for (int i = 1; i < 20; i++)
+	{
+		for (int node = 1; node <= n; node++)
+		{
+			parents[node][i] = parents[parents[node][i - 1]][i - 1];
+		}
+	}
+}
+
+int lca(int node1, int node2)
+{
+	if (node1 == node2)return node1;
+	if (depth[node1] > depth[node2])swap(node1, node2);
+	if (depth[node1] != depth[node2])
+	{
+		for (int i = 20; i >= 0; i--)
+		{
+			if (depth[node1] <= depth[parents[node2][i]])
+			{
+				node2 = parents[node2][i];
+			}
+		}
+	}
+	int lca = node1;
+	if (node1 != node2)
+	{
+		for (int i = 20; i >= 0; i--)
+		{
+			if (node1 != node2 && depth[node1]>=0)
+			{
+				node1 = parents[node1][i];
+				node2 = parents[node2][i];
+			}
+			lca = node1;
+		}
+	}
+	return lca;
+}
+int main() {
+	cin >> n;
+	for (int i = 0; i < n - 1; i++)
+	{
+		int node1, node2;
+		cin >> node1 >> node2;
+		tree[node1].push_back(node2);
+		tree[node2].push_back(node1);
+	}
+	dfs(1);
+	parentSetting();
+	cin >> query;
+	for (int i = 0; i < query; i++)
+	{
+		int x, y;
+		cin >> x >> y;
+		cout << lca(x, y) << "\n";
+	}
+	/*for (int i = 1; i <= n; i++)
+	{
+		cout << "node " << i << ":";
+		for (int j = 0; j < 20; j++)
+		{
+			cout << parents[i][j];
+		}
+		cout << "\n";
+	}*/
+
+
+}
+
+////14003번 문제 b
+//int main() {
+//	ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+//	vector<int> list, temp, idxs, answer;
+//	int N;
+//	cin >> N;
+//	for (int i = 0; i < N; i++) {
+//		int num;
+//		cin >> num;
+//		list.push_back(num);
+//	}
+//	idxs.resize(N,0);
+//	for (int i = 0; i < N; i++) {
+//		int save = lower_bound(temp.begin(), temp.end(), list[i]) - temp.begin();
+//		if (temp.size() == 0 || temp.back() < list[i])
+//			temp.push_back(list[i]);
+//		else
+//			temp[save] = list[i];
+//		idxs[i] = save;
+//	}
+//	int index = temp.size() - 1;
+//	printf("\n");
+//	for (int i = N-1; i >= 0; i--) {
+//		if (index == idxs[i]) {
+//			answer.push_back(list[i]);
+//			index--;
+//		}
+//	}
+//	cout << temp.size() << "\n";
+//	reverse(answer.begin(), answer.end());
+//	for (int i = 0; i < answer.size(); i++) {
+//		cout << answer[i] << " ";
+//	}
+//}
+
+////11438번 문제 old b
+//#define MAX 100001
+//int n, m;
+//int parent[MAX][21];
+//int depth[MAX];
+//vector<int> vec[MAX];
+//int visited[MAX];
+//void dfs(int node) {
+//	visited[node] = 1;
+//	for (auto next : vec[node]) {
+//		if (!visited[	next]) {
+//			parent[next][0] = node;
+//			depth[next] = depth[node] + 1;
+//			dfs(next);
+//		}
+//	}
+//}
+//int lca(int node1, int node2) {
+//	if (depth[node1] > depth[node2]) {
+//		int temp = node1;
+//		node1 = node2;
+//		node2 = temp;
+//	}
+//	int i = 20;
+//	while (depth[node1] != depth[node2] && i>=0) {
+//		if (depth[node2] - depth[node1] & 1 << i) 
+//			node2 = parent[node2][(1 << i)-1];
+//		i--;
+//	}
+//	if (node1 == node2)
+//		return node1;
+//	i = 0;
+//	while (node1 != node2 && i >= 0) {
+//		if (parent[node1][i - 1] != 0 && parent[node2][i - 1] != 0 && node1!=node2) {
+//			node1 = parent[node1][i- 1];
+//			node2 = parent[node2][i- 1];
+//			//cout << "node1 " << node1 << "   node2 " << node2 << endl;
+//		}
+//
+//		i++;
+//	}
+//	return node1;
+//}
+//int main() {
+//	cin >> n;
+//	for (int i = 0; i < n - 1; i++) {
+//		int n1, n2;
+//		cin >> n1 >> n2;
+//		vec[n1].push_back(n2);
+//		vec[n2].push_back(n1);
+//	}
+//	dfs(1);
+//	int idx = 20;
+//	for (int i = 1; i <= n; i++) {
+//		for (int j = 1; j <= 20; j++)
+//			parent[i][j] = parent[parent[i][j - 1]][j - 1];
+//	}
+//	int m;
+//	cin >> m;
+//	for (int i = 1; i <= n; i++) {
+//		for (int j = 0; j <= 20; j++)
+//			cout << parent[i][j] << " ";
+//		cout << endl;
+//	}
+//	for (int i = 0; i < m; i++) {
+//		int n1, n2;
+//		cin >> n1 >> n2;
+//		cout << lca(n1, n2) << "\n";
+//	}
+//}
+
+////3584번 문제 b
+//int N;
+//vector<int> list[10001];
+//int parent[10001];
+//int depth[10001];
+//void dfs(int curr) {
+//	for(auto next: list[curr]) {
+//		parent[next] = curr;
+//		depth[next] = depth[curr] + 1;
+//		dfs(next);
+//	}
+//}
+//int LCA(int node1, int node2) {
+//	if (depth[node1] > depth[node2]) {
+//		int temp = node1;
+//		node1 = node2;
+//		node2 = temp;
+//	}
+//	while (depth[node1] != depth[node2]) {
+//		node2 = parent[node2];
+//	}
+//	if (node1 == node2)
+//		return node1;
+//	while (node1 != node2) {
+//		node1 = parent[node1];
+//		node2 = parent[node2];
+//	}
+//	return node1;
+//}
+//void init() {
+//	for (int i = 0; i < 10001; i++) {
+//		list[i].clear();
+//		parent[i] = i;
+//	}
+//}
+//int main() {
+//	ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+//	int T;
+//	cin >> T;
+//	for (int i = 0; i < T; i++) {
+//		init();
+//		cin >> N;
+//		for (int j = 0; j < N - 1; j++) {
+//			int num1, num2;
+//			cin >> num1 >> num2;
+//			list[num1].push_back(num2);
+//			parent[num2] = num1;
+//		}
+//		for (int i = 1; i <= N; i++) {
+//			if (parent[i] == i) {
+//				depth[i] = 0;
+//				dfs(i);
+//				break;
+//			}
+//		}
+//		int com_1, com_2;
+//		cin >> com_1 >> com_2;
+//		cout << LCA(com_1, com_2) << "\n";
+//	}
+//}
+
+////9663번 문제 b
+//int list[16];
+//int N, total = 0;
+//bool check(int level) {
+//	for (int i = 0; i < level; i++)
+//		if (list[i] == list[level] || abs(list[level] - list[i]) == level - i)
+//			return false;
+//	return true;
+//}
+//void f(int num)
+//{
+//	if (num == N)
+//		total++;
+//	else {
+//		for (int i = 0; i < N; i++) {
+//			list[num] = i;
+//			if (check(num))
+//				f(num + 1);
+//		}
+//	}
+//}
+//int main() {
+//	cin >> N;
+//	f(0);
+//	cout << total;
+//}
+
+////14002번 문제 b
+//int main() {
+//	int N;
+//	int list[1000], len[1000], answer[1000];
+//	cin >> N;
+//	for (int i = 0; i < N; i++)
+//		cin >> list[i];
+//	for (int i = 0; i < N; i++) {
+//		len[i] = 1;
+//		for (int j = 0; j < i; j++) {
+//			if (list[i] > list[j])
+//				len[i] = max(len[i], len[j] + 1);
+//		}
+//	}
+//	int maxlen = 0, maxidx;
+//	for (int i = 0; i < N; i++)
+//		if (len[i] > maxlen) {
+//			maxlen = len[i];
+//			maxidx = i;
+//		}
+//	answer[0] = list[maxidx];
+//	int temp = maxlen - 1;
+//	for (int i = maxidx - 1, j = 0; i >= 0; i--) {
+//		if (len[i] == temp && list[i] < answer[j]) {
+//			answer[++j] = list[i];
+//			temp--;
+//		}
+//	}
+//	cout << maxlen << endl;
+//	for (int i = maxlen - 1; i >= 0; i--)
+//		cout << answer[i] << " ";
+//}
+
+////14889번 문제 b
+//int N;
+//int list[21][21], visit[21];
+//int MIN = 999999999;
+//void f2() {
+//	int score_1 = 0;
+//	int score_2 = 0;
+//	int save;
+//	for (int i = 1; i <= N; i++) {
+//		for (int j = i + 1; j <= N; j++) {
+//			if (visit[i] && visit[j]) {
+//				score_1 += list[i][j];
+//				score_1 += list[j][i];
+//			}
+//			else if (!visit[i] && !visit[j]) {
+//				score_2 += list[i][j];
+//				score_2 += list[j][i];
+//			}
+//
+//		}
+//	}
+//	save = abs(score_1 - score_2);
+//	if (save < MIN) {
+//		MIN = save;
+//	}
+//}
+//void f1(int cnt, int idx) {
+//	if (cnt == N / 2) {
+//		f2();
+//		return;
+//	}
+//	for (int i = idx; i <= N; i++) {
+//		visit[i] = 1;
+//		f1(cnt + 1, i + 1);
+//		visit[i] = 0;
+//	}
+//}
+//int main() {
+//	cin >> N;
+//	for (int i = 1; i <= N; i++) {
+//		for (int j = 1; j <= N; j++) {
+//			cin >> list[i][j];
+//		}
+//	}
+//	f1(0, 1);
+//	cout << MIN;
+//}
 
 ////3036번 문제 b
 //int f(int num1, int num2) {
