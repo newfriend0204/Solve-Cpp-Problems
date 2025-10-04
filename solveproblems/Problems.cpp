@@ -13,6 +13,62 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : baekjoon, c : codeup
 
+//15686 b
+int N, M;
+vector<int> save;
+int best = 99999999, count = 0;
+vector<pair<int, int>> house;
+vector<pair<int, int>> chicken;
+int AllDist(vector<int> save) {
+	int sum = 0;
+	for (auto [hy, hx] : house) {
+		int a = 99999999;
+		for (int i = 0; i < (int)save.size(); i++) {
+			auto [cy, cx] = chicken[save[i]];
+			int dist = abs(hy - cy) + abs(hx - cx);
+			a = min(a, dist);
+		}
+		sum += a;
+		if (sum >= best)
+			break;
+	}
+	return sum;
+}
+void dfs(int idx, int cnt) {
+	if (cnt == M) {
+		best = min(best, AllDist(save));
+		return;
+	}
+
+	if (idx == (int)chicken.size())
+		return;
+
+	if (cnt + (int)chicken.size() - idx < M)
+		return;
+
+	save.push_back(idx);
+	dfs(idx + 1, cnt + 1);
+	save.pop_back();
+
+	dfs(idx + 1, cnt);
+}
+int main() {
+	cin >> N >> M;
+	for (int i = 0; i < N; i++) {				 
+		for (int j = 0; j < N; j++) {
+			int num;
+			cin >> num;
+			if (num == 1)
+				house.push_back({ i, j });
+			else if (num == 2)
+				chicken.push_back({ i, j });
+		}
+	}
+
+	dfs(0, 0);
+	cout << best;
+}
+
 ////2475 b
 //int main() {
 //	int a, b, c, d, e;
