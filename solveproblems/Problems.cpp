@@ -13,6 +13,262 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : baekjoon, c : codeup
 
+//1062 b
+int N, K, answer = 0;
+bool learned[26] = { false };
+vector<string> words;
+void dfs(int idx, int depth) {
+	if (depth == K - 5) {
+		int count = 0;
+		for (int i = 0; i < words.size(); i++) {
+			int pass = 1;
+			for (char c : words[i]) {
+				if (learned[c - 'a'] == false) {
+					pass = 0;
+					break;
+				}
+			}
+			if (pass == 1)
+				count++;
+		}
+		answer = max(answer, count);
+		return;
+	}
+
+	for (int i = idx; i < 26; i++) {
+		if (learned[i])
+			continue;
+		learned[i] = true;
+		dfs(i + 1, depth + 1);
+		learned[i] = false;
+	}
+}
+int main() {
+	cin >> N >> K;
+	if (K < 5) {
+		cout << 0;
+		return 0;
+	}
+	for (int i = 0; i < N; i++) {
+		string input;
+		cin >> input;
+		words.push_back(input.substr(4, input.length() - 8));
+	}
+	learned['a' - 'a'] = true;
+	learned['n' - 'a'] = true;
+	learned['t' - 'a'] = true;
+	learned['i' - 'a'] = true;
+	learned['c' - 'a'] = true;
+
+	dfs(0, 0);
+	cout << answer;
+}
+
+////1107 b
+//int N, M, answer = 0;
+//vector<int> broken;
+//int canPress(int num) {
+//	if (num == 0) {
+//		if (find(broken.begin(), broken.end(), 0) != broken.end())
+//			return -1;
+//		else
+//			return 1;
+//	}
+//
+//	int len = 0;
+//	while (num > 0) {
+//		int save = num % 10;
+//		if (find(broken.begin(), broken.end(), save) != broken.end())
+//			return -1;
+//		len++;
+//		num /= 10;
+//	}
+//	return len;
+//}
+//int main() {
+//	cin >> N >> M;
+//	for (int i = 0; i < M; i++) {
+//		int a;
+//		cin >> a;
+//		broken.push_back(a);
+//	}
+//	answer = abs(N - 100);
+//
+//	for (int i = 0; i <= 1000000; i++) {
+//		int len = canPress(i);
+//		if (len != -1)
+//			answer = min(answer, len + abs(i - N));
+//	}
+//
+//	cout << answer;
+//}
+
+////14500 b
+//vector<vector<pair<int, int>>> tetromino = {
+//    {{0,0},{0,1},{0,2},{0,3}},
+//
+//    {{0,0},{1,0},{2,0},{3,0}},
+//    {{0,0},{0,1},{1,0},{1,1}},
+//
+//    {{0,0},{1,0},{2,0},{2,1}},
+//    {{0,0},{0,1},{1,1},{2,1}},
+//    {{0,0},{0,1},{0,2},{1,0}},
+//    {{0,2},{1,0},{1,1},{1,2}},
+//
+//    {{0,1},{1,1},{2,1},{2,0}},
+//    {{0,0},{1,0},{2,0},{0,1}},
+//    {{0,0},{0,1},{0,2},{1,2}},
+//    {{0,0},{1,0},{1,1},{1,2}},
+//
+//    {{0,0},{0,1},{1,1},{1,2}},
+//    {{0,1},{1,0},{1,1},{2,0}},
+//
+//    {{0,1},{0,2},{1,0},{1,1}},
+//    {{0,0},{1,0},{1,1},{2,1}},
+//
+//    {{0,0},{0,1},{0,2},{1,1}},
+//    {{0,1},{1,1},{2,1},{1,0}},
+//    {{0,1},{1,0},{1,1},{1,2}},
+//    {{0,0},{1,0},{2,0},{1,1}}
+//};
+//int main() {
+//    int N, M, answer = 0;
+//    cin >> N >> M;
+//    vector<vector<int>> map(N, vector<int>(M));
+//    for (int i = 0; i < N; i++) {
+//        for (int j = 0; j < M; j++) {
+//            cin >> map[i][j];
+//        }
+//    }
+//
+//    for (int i = 0; i < N; i++) {
+//        for (int j = 0; j < M; j++) {
+//            for (int k = 0; k < tetromino.size(); k++) {
+//                int sum = 0, pass = 1;
+//                for (int l = 0; l < 4; l++) {
+//                    int ny = i + tetromino[k][l].first;
+//                    int nx = j + tetromino[k][l].second;
+//                    if (ny < 0 || nx < 0 || ny >= N || nx >= M) {
+//                        pass = 0;
+//                        break;
+//                    }
+//                    sum += map[ny][nx];
+//                }
+//                if (pass == 1)
+//                    answer = max(answer, sum);
+//            }
+//        }
+//    }
+//
+//    cout << answer;
+//}
+
+////14502 b
+//int N, M, answer = 0;
+//int dx[] = { 0, 0, -1, 1 }, dy[] = { 1, -1, 0, 0 };
+//void bfs(vector<vector<int>> map) {
+//	queue<pair<int, int>> q;
+//	vector<vector<int>> visited(N, vector<int>(M, 0));
+//
+//	for (int i = 0; i < N; i++) {
+//		for (int j = 0; j < M; j++) {
+//			if (map[i][j] == 2) {
+//				q.push({ i,j });
+//				visited[i][j] = 1;
+//			}
+//		}
+//	}
+//
+//	while (!q.empty()) {
+//		auto [y, x] = q.front();
+//		q.pop();
+//		for (int d = 0; d < 4; d++) {
+//			int ny = y + dy[d];
+//			int nx = x + dx[d];
+//			if (ny < 0 || nx < 0 || ny >= N || nx >= M)
+//				continue;
+//			if (visited[ny][nx])
+//				continue;
+//			if (map[ny][nx] == 1)
+//				continue;
+//
+//			visited[ny][nx] = 1;
+//			map[ny][nx] = 2;
+//			q.push({ ny, nx });
+//		}
+//	}
+//
+//	int safe = 0;
+//	for (int i = 0; i < N; i++)
+//		for (int j = 0; j < M; j++)
+//			if (map[i][j] == 0)
+//				safe++;
+//	answer = max(answer, safe);
+//}
+//void makeWall(int cnt, int startx, int starty, vector<vector<int>> map) {
+//	if (cnt == 3) {
+//		bfs(map);
+//		return;
+//	}
+//
+//	for (int i = starty; i < N; i++) {
+//		for (int j = (i == starty ? startx : 0); j < M; j++) {
+//			if (map[i][j] != 0)
+//				continue;
+//			map[i][j] = 1;
+//
+//			if (j + 1 < M)
+//				makeWall(cnt + 1, j + 1, i, map);
+//			else
+//				makeWall(cnt + 1, 0, i + 1, map);
+//			map[i][j] = 0;
+//		}
+//	}
+//}
+//int main() {
+//	cin >> N >> M;
+//	vector<vector<int>> lab(N, vector<int>(M));
+//
+//	for (int i = 0; i < N; i++) {
+//		for (int j = 0; j < M; j++) {
+//			cin >> lab[i][j];
+//		}
+//	}
+//
+//	makeWall(0, 0, 0, lab);
+//	cout << answer;
+//}
+
+////9663 b
+//int N, answer = 0;
+//int col[15], diagUp[30], diagDown[30];
+//void dfs(int row) {
+//	if (row == N) {
+//		answer++;
+//		return;
+//	}
+//
+//	for (int i = 0; i < N; i++) {
+//		if (col[i] == 1 || diagUp[row + i] == 1 || diagDown[row - i + N - 1])
+//			continue;
+//
+//		col[i] = 1;
+//		diagUp[row + i] = 1;
+//		diagDown[row - i + N - 1] = 1;
+//
+//		dfs(row + 1);
+//
+//		col[i] = 0;
+//		diagUp[row + i] = 0;
+//		diagDown[row - i + N - 1] = 0;
+//	}
+//}
+//int main() {
+//	cin >> N;
+//	dfs(0);
+//	cout << answer;
+//}
+
 ////1038 b
 //int N;
 //vector<unsigned long long> results;
