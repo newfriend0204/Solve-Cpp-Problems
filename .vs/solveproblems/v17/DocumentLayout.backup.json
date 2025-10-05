@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\\uC6B0\uCE20\uB85C\u7A7A\\solveproblems\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\\uC6B0\uCE20\uB85C\u7A7A\\solveproblems\\solveproblems\\Problems.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:solveproblems\\Problems.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F1403203-9B69-4BDC-A69C-8E233C359C14}|solveproblems\\solveproblems.vcxproj|C:\\\uC6B0\uCE20\uB85C\u7A7A\\solveproblems\\solveproblems\\Problems.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F1403203-9B69-4BDC-A69C-8E233C359C14}|solveproblems\\solveproblems.vcxproj|solutionrelative:solveproblems\\Problems.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\\uC6B0\uCE20\uB85C\u7A7A\\solveproblems\\solveproblems\\ProblemsOld.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:solveproblems\\ProblemsOld.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F1403203-9B69-4BDC-A69C-8E233C359C14}|solveproblems\\solveproblems.vcxproj|C:\\\uC6B0\uCE20\uB85C\u7A7A\\solveproblems\\solveproblems\\ProblemsOld.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F1403203-9B69-4BDC-A69C-8E233C359C14}|solveproblems\\solveproblems.vcxproj|solutionrelative:solveproblems\\ProblemsOld.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -32,9 +32,9 @@
               "RelativeDocumentMoniker": "solveproblems\\Problems.cpp",
               "ToolTip": "C:\\\uC6B0\uCE20\uB85C\u7A7A\\solveproblems\\solveproblems\\Problems.cpp",
               "RelativeToolTip": "solveproblems\\Problems.cpp",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAACsAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-04T00:24:33.8Z",
+              "WhenOpened": "2025-10-05T02:39:28.431Z",
               "EditorCaption": ""
             },
             {
@@ -45,9 +45,9 @@
               "RelativeDocumentMoniker": "solveproblems\\ProblemsOld.cpp",
               "ToolTip": "C:\\\uC6B0\uCE20\uB85C\u7A7A\\solveproblems\\solveproblems\\ProblemsOld.cpp",
               "RelativeToolTip": "solveproblems\\ProblemsOld.cpp",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAA8AAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAALwgAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-04T00:24:33.07Z",
+              "WhenOpened": "2025-10-05T02:37:45.881Z",
               "EditorCaption": ""
             }
           ]
