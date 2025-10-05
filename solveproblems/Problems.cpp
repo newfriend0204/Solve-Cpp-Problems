@@ -13,61 +13,171 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : baekjoon, c : codeup
 
-//15686 b
-int N, M;
-vector<int> save;
-int best = 99999999, count = 0;
-vector<pair<int, int>> house;
-vector<pair<int, int>> chicken;
-int AllDist(vector<int> save) {
-	int sum = 0;
-	for (auto [hy, hx] : house) {
-		int a = 99999999;
-		for (int i = 0; i < (int)save.size(); i++) {
-			auto [cy, cx] = chicken[save[i]];
-			int dist = abs(hy - cy) + abs(hx - cx);
-			a = min(a, dist);
-		}
-		sum += a;
-		if (sum >= best)
-			break;
-	}
-	return sum;
-}
-void dfs(int idx, int cnt) {
-	if (cnt == M) {
-		best = min(best, AllDist(save));
-		return;
-	}
+////1038 b
+//int N;
+//vector<unsigned long long> results;
+//void dfs(unsigned long long num, int degit) {
+//	results.push_back(num);
+//	for (int i = 0; i < degit; i++) {
+//		dfs(num * 10 + i, i);
+//	}
+//}
+//int main() {
+//	cin >> N;
+//
+//	for (int i = 0; i <= 9; i++)
+//		dfs(i, i);
+//
+//	sort(results.begin(), results.end());
+//	if (N >= results.size()) {
+//		cout << -1;
+//		return 0;
+//	}
+//	cout << results[N];
+//	return 0;
+//}
 
-	if (idx == (int)chicken.size())
-		return;
+////2589 b
+//int col, row;
+//int dx[] = { 0, 0, -1, 1 }, dy[] = { 1, -1, 0, 0 };
+//vector<vector<char>> list(51, vector<char>(51));
+//int bfs(int sy, int sx) {
+//	vector<vector<int>> visited(51, vector<int>(51, 0));
+//	queue<pair<int, int>> q;
+//	int best = -1;
+//	visited[sy][sx] = 1;
+//	q.push({ sy, sx });
+//
+//	while (!q.empty()) {
+//		int y = q.front().first;
+//		int x = q.front().second;
+//		q.pop();
+//
+//		for (int i = 0; i < 4; i++) {
+//			int ny = y + dy[i];
+//			int nx = x + dx[i];
+//
+//			if (ny < 0 || nx < 0 || ny >= col || nx >= row)
+//				continue;
+//
+//			if (visited[ny][nx] != 0 || list[ny][nx] == 'W')
+//				continue;
+//
+//			visited[ny][nx] = visited[y][x] + 1;
+//			best = max(best, visited[y][x]);
+//			q.push({ ny, nx });
+//		}
+//	}
+//
+//	return best;
+//}
+//int main() {
+//	cin >> col >> row;
+//	for (int i = 0; i < col; i++) {
+//		for (int j = 0; j < row; j++)
+//			cin >> list[i][j];
+//	}
+//
+//	int best = -1;
+//	for (int i = 0; i < col; i++) {
+//		for (int j = 0; j < row; j++) {
+//			if (list[i][j] == 'L')
+//				best = max(best, bfs(i, j));
+//		}
+//	}
+//
+//	cout << best;
+//}
 
-	if (cnt + (int)chicken.size() - idx < M)
-		return;
+////1759 b
+//int L, C;
+//vector<char> vowel = { 'a', 'e', 'i', 'o', 'u' };
+//vector<char> list;
+//void dfs(int idx, string text) {
+//	if (text.length() == L) {
+//		int isV = 0, isNotV = 0;
+//		for (auto a : text) {
+//			if (find(vowel.begin(), vowel.end(), a) != vowel.end())
+//				isV++;
+//			else
+//				isNotV++;
+//		}
+//		if (isV >= 1 && isNotV >= 2)
+//			cout << text << "\n";
+//		return;
+//	}
+//
+//	for (int i = idx; i < C; i++) {
+//		dfs(i + 1, text + list[i]);
+//	}
+//}
+//int main() {
+//	cin >> L >> C;
+//	for (int i = 0; i < C; i++) {
+//		char a;
+//		cin >> a;
+//		list.push_back(a);
+//	}
+//
+//	sort(list.begin(), list.end());
+//	dfs(0, "");
+//}
 
-	save.push_back(idx);
-	dfs(idx + 1, cnt + 1);
-	save.pop_back();
-
-	dfs(idx + 1, cnt);
-}
-int main() {
-	cin >> N >> M;
-	for (int i = 0; i < N; i++) {				 
-		for (int j = 0; j < N; j++) {
-			int num;
-			cin >> num;
-			if (num == 1)
-				house.push_back({ i, j });
-			else if (num == 2)
-				chicken.push_back({ i, j });
-		}
-	}
-
-	dfs(0, 0);
-	cout << best;
-}
+////15686 b
+//int N, M;
+//vector<int> save;
+//int best = 99999999, count = 0;
+//vector<pair<int, int>> house;
+//vector<pair<int, int>> chicken;
+//int AllDist(vector<int> save) {
+//	int sum = 0;
+//	for (auto [hy, hx] : house) {
+//		int a = 99999999;
+//		for (int i = 0; i < (int)save.size(); i++) {
+//			auto [cy, cx] = chicken[save[i]];
+//			int dist = abs(hy - cy) + abs(hx - cx);
+//			a = min(a, dist);
+//		}
+//		sum += a;
+//		if (sum >= best)
+//			break;
+//	}
+//	return sum;
+//}
+//void dfs(int idx, int cnt) {
+//	if (cnt == M) {
+//		best = min(best, AllDist(save));
+//		return;
+//	}
+//
+//	if (idx == (int)chicken.size())
+//		return;
+//
+//	if (cnt + (int)chicken.size() - idx < M)
+//		return;
+//
+//	save.push_back(idx);
+//	dfs(idx + 1, cnt + 1);
+//	save.pop_back();
+//
+//	dfs(idx + 1, cnt);
+//}
+//int main() {
+//	cin >> N >> M;
+//	for (int i = 0; i < N; i++) {				 
+//		for (int j = 0; j < N; j++) {
+//			int num;
+//			cin >> num;
+//			if (num == 1)
+//				house.push_back({ i, j });
+//			else if (num == 2)
+//				chicken.push_back({ i, j });
+//		}
+//	}
+//
+//	dfs(0, 0);
+//	cout << best;
+//}
 
 ////2475 b
 //int main() {
