@@ -13,56 +13,320 @@ using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : baekjoon, c : codeup
 
-//1062 b
-int N, K, answer = 0;
-bool learned[26] = { false };
-vector<string> words;
-void dfs(int idx, int depth) {
-	if (depth == K - 5) {
-		int count = 0;
-		for (int i = 0; i < words.size(); i++) {
-			int pass = 1;
-			for (char c : words[i]) {
-				if (learned[c - 'a'] == false) {
-					pass = 0;
-					break;
-				}
-			}
-			if (pass == 1)
-				count++;
-		}
-		answer = max(answer, count);
-		return;
-	}
+////15683 b
+//int N, M, answer = 1000000000;
+//vector<vector<int>> list;
+//int dy[] = { 0, 1, 0, -1 }, dx[] = { 1, 0, -1, 0 };
+//struct CCTV {
+//	int type, y, x;
+//};
+//vector<vector<vector<int>>> dirs = {
+//	{},
+//	{{0},{1},{2},{3}},
+//	{{0,2},{1,3}},
+//	{{0,1},{1,2},{2,3},{3,0}},
+//	{{0,1,2},{1,2,3},{2,3,0},{3,0,1}},
+//	{{0,1,2,3}}
+//};
+//vector<CCTV> cctvs;
+//void dfs(int idx, vector<vector<int>> maps) {
+//    if (idx == cctvs.size()) {
+//        int count = 0;
+//        for (int i = 0; i < N; i++) {
+//            for (int j = 0; j < M; j++) {
+//                if (maps[i][j] == 0)
+//                    count++;
+//            }
+//        }
+//        answer = min(answer, count);
+//        return;
+//    }
+//
+//    int type = cctvs[idx].type;
+//    int y = cctvs[idx].y;
+//    int x = cctvs[idx].x;
+//
+//    for (int i = 0; i < dirs[type].size(); i++) {
+//        vector<vector<int>> next = maps;
+//        for (int k = 0; k < dirs[type][i].size(); k++) {
+//            int d = dirs[type][i][k];
+//            int ny = y;
+//            int nx = x;
+//
+//            while (true) {
+//                ny += dy[d];
+//                nx += dx[d];
+//
+//                if (ny < 0 || ny >= N || nx < 0 || nx >= M)
+//                    break;
+//                if (next[ny][nx] == 6)
+//                    break;
+//                if (next[ny][nx] == 0)
+//                    next[ny][nx] = 7;
+//            }
+//        }
+//
+//        dfs(idx + 1, next);
+//    }
+//}
+//int main() {
+//	cin >> N >> M;
+//	list.resize(N, vector<int>(M));
+//	for (int i = 0; i < N; i++) {
+//		for (int j = 0; j < M; j++) {
+//			cin >> list[i][j];
+//			if (list[i][j] != 0 && list[i][j] != 6)
+//				cctvs.push_back({ list[i][j], i, j });
+//		}
+//	}
+//	dfs(0, list);
+//	cout << answer;
+//}
 
-	for (int i = idx; i < 26; i++) {
-		if (learned[i])
-			continue;
-		learned[i] = true;
-		dfs(i + 1, depth + 1);
-		learned[i] = false;
-	}
-}
-int main() {
-	cin >> N >> K;
-	if (K < 5) {
-		cout << 0;
-		return 0;
-	}
-	for (int i = 0; i < N; i++) {
-		string input;
-		cin >> input;
-		words.push_back(input.substr(4, input.length() - 8));
-	}
-	learned['a' - 'a'] = true;
-	learned['n' - 'a'] = true;
-	learned['t' - 'a'] = true;
-	learned['i' - 'a'] = true;
-	learned['c' - 'a'] = true;
+////10974 b
+//int main() {
+//	int N;
+//	vector<int> list;
+//	cin >> N;
+//	list.resize(N);
+//	for (int i = 0; i < N; i++)
+//		list[i] = i + 1;
+//
+//	sort(list.begin(), list.end());
+//	do {
+//		for (int i = 0; i < list.size(); i++)
+//			cout << list[i] << ' ';
+//		cout << "\n";
+//	} while (next_permutation(list.begin(), list.end()));
+//}
 
-	dfs(0, 0);
-	cout << answer;
-}
+////10819 b
+//int N, answer = 0;
+//vector<int> list;
+//int check(vector<int> num) {
+//	int sum = 0;
+//	for (int i = 0; i < num.size() - 1; i++) {
+//		sum += abs(num[i] - num[i + 1]);
+//	}
+//	return sum;
+//}
+//int main() {
+//	cin >> N;
+//	list.resize(N);
+//	for (int i = 0; i < N; i++)
+//		cin >> list[i];
+//
+//	sort(list.begin(), list.end());
+//	do {
+//		answer = max(answer, check(list));
+//	} while (next_permutation(list.begin(), list.end()));
+//
+//	cout << answer;
+//}
+
+////2468 b
+//int N, maxHeight = -1, answer = 0;
+//int dy[] = { -1, 1, 0, 0 }, dx[] = { 0, 0, -1, 1 };
+//vector<vector<int>> table;
+//vector<vector<int>> visited(N, vector<int>(N, 0));
+//void dfs(int y, int x, int idx) {
+//	visited[y][x] = 1;
+//	
+//	for (int dir = 0; dir < 4; dir++) {
+//		int ny = y + dy[dir];
+//		int nx = x + dx[dir];
+//
+//		if (ny < 0 || ny >= N || nx < 0 || nx >= N)
+//			continue;
+//
+//		if (table[ny][nx] > idx && visited[ny][nx] == 0)
+//			dfs(ny, nx, idx);
+//	}
+//}
+//void check(int idx) {
+//	int count = 0;
+//	visited.assign(N, vector<int>(N, 0));
+//	for (int i = 0; i < N; i++) {
+//		for (int j = 0; j < N; j++) {
+//			if (visited[i][j] == 0 && table[i][j] > idx) {
+//				dfs(i, j, idx);
+//				count++;
+//			}
+//		}
+//	}
+//	answer = max(answer, count);
+//}
+//int main() {
+//	cin >> N;
+//	table.resize(N, vector<int>(N));
+//	for (int i = 0; i < N; i++) {
+//		for (int j = 0; j < N; j++) {
+//			cin >> table[i][j];
+//			maxHeight = max(maxHeight, table[i][j]);
+//		}
+//	}
+//	
+//	for (int i = 0; i <= maxHeight; i++)
+//		check(i);
+//	cout << answer;
+//}
+
+////14889 b
+//int N, answer = 1000000000;
+//vector<vector<int>> table;
+//void dfs(int idx, int sumStart, int sumLink, vector<int> start, vector<int> link) {
+//    if (idx == N) {
+//        int sum = 0;
+//
+//        for (int i = 0; i < (int)start.size(); i++) {
+//            for (int j = i + 1; j < (int)start.size(); j++) {
+//                int u = start[i], v = start[j];
+//                sum += table[u][v] + table[v][u];
+//            }
+//        }
+//
+//        for (int i = 0; i < (int)link.size(); i++) {
+//            for (int j = i + 1; j < (int)link.size(); j++) {
+//                int u = link[i], v = link[j];
+//                sum -= table[u][v] + table[v][u];
+//            }
+//        }
+//
+//        answer = min(answer, abs(sum));
+//        return;
+//    }
+//
+//	if (sumStart < N / 2) {
+//		start.push_back(idx);
+//		dfs(idx + 1, sumStart + 1, sumLink, start, link);
+//        start.pop_back();
+//	}
+//	if (sumLink < N / 2) {
+//		link.push_back(idx);
+//		dfs(idx + 1, sumStart, sumLink + 1, start, link);
+//        link.pop_back();
+//	}
+//}
+//int main() {
+//	cin >> N;
+//	table.resize(N, vector<int>(N));
+//	for (int i = 0; i < N; i++) {
+//		for (int j = 0; j < N; j++)
+//			cin >> table[i][j];
+//	}
+//
+//	dfs(0, 0, 0, {}, {});
+//	cout << answer;
+//}
+
+////14888 b
+//int N, minAnswer = 1000000001, maxAnswer = -1000000001;
+//vector<int> list;
+//vector<int> possible = { 0, 0, 0, 0 };
+//void dfs(int idx, int sum, vector<int> possible) {
+//	if (idx == N - 1) {
+//		minAnswer = min(minAnswer, sum);
+//		maxAnswer = max(maxAnswer, sum);
+//		return;
+//	}
+//	
+//	if (possible[0] > 0)
+//		dfs(idx + 1, sum + list[idx + 1], { possible[0] - 1, possible[1], possible[2], possible[3] });
+//	if (possible[1] > 0)
+//		dfs(idx + 1, sum - list[idx + 1], { possible[0], possible[1] - 1, possible[2], possible[3] });
+//	if (possible[2] > 0)
+//		dfs(idx + 1, sum * list[idx + 1], { possible[0], possible[1], possible[2] - 1, possible[3] });
+//	if (possible[3] > 0)
+//		dfs(idx + 1, sum / list[idx + 1], { possible[0], possible[1], possible[2], possible[3] - 1 });
+//}
+//int main() {
+//	cin >> N;
+//	list.resize(N);
+//	for (int i = 0; i < N; i++)
+//		cin >> list[i];
+//	for (int i = 0; i < 4; i++)
+//		cin >> possible[i];
+//
+//	dfs(0, list[0], possible);
+//	cout << maxAnswer << "\n" << minAnswer;
+//}
+
+////14501 b
+//int N, answer = 0;
+//vector<int> T, P;
+//void dfs(int idx, int sum) {
+//	if (idx >= N) {
+//		answer = max(answer, sum);
+//		return;
+//	}
+//
+//	if (idx + T[idx] <= N)
+//		dfs(idx + T[idx], sum + P[idx]);
+//	dfs(idx + 1, sum);
+//}
+//int main() {
+//	cin >> N;
+//	for (int i = 0; i < N; i++) {
+//		int a, b;
+//		cin >> a >> b;
+//		T.push_back(a);
+//		P.push_back(b);
+//	}
+//
+//	dfs(0, 0);
+//	cout << answer;
+//}
+
+////1062 b
+//int N, K, answer = 0;
+//bool learned[26] = { false };
+//vector<string> words;
+//void dfs(int idx, int depth) {
+//	if (depth == K - 5) {
+//		int count = 0;
+//		for (int i = 0; i < words.size(); i++) {
+//			int pass = 1;
+//			for (char c : words[i]) {
+//				if (learned[c - 'a'] == false) {
+//					pass = 0;
+//					break;
+//				}
+//			}
+//			if (pass == 1)
+//				count++;
+//		}
+//		answer = max(answer, count);
+//		return;
+//	}
+//
+//	for (int i = idx; i < 26; i++) {
+//		if (learned[i])
+//			continue;
+//		learned[i] = true;
+//		dfs(i + 1, depth + 1);
+//		learned[i] = false;
+//	}
+//}
+//int main() {
+//	cin >> N >> K;
+//	if (K < 5) {
+//		cout << 0;
+//		return 0;
+//	}
+//	for (int i = 0; i < N; i++) {
+//		string input;
+//		cin >> input;
+//		words.push_back(input.substr(4, input.length() - 8));
+//	}
+//	learned['a' - 'a'] = true;
+//	learned['n' - 'a'] = true;
+//	learned['t' - 'a'] = true;
+//	learned['i' - 'a'] = true;
+//	learned['c' - 'a'] = true;
+//
+//	dfs(0, 0);
+//	cout << answer;
+//}
 
 ////1107 b
 //int N, M, answer = 0;
