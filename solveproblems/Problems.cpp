@@ -9,9 +9,71 @@
 #include<cmath>
 #include<string>
 #include<map>
+#define MAX 2147483647
+#define MIN -2147483648
 using namespace std;
 //ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 //b : baekjoon, c : codeup
+
+////1182 b
+//int N, S, answer = 0;
+//vector<int> list;
+//void dfs(int idx, int sum, int picked) {
+//	if (idx == N) {
+//		if (sum == S && picked == 1) {
+//			answer++;
+//		}
+//		return;
+//	}
+//
+//	dfs(idx + 1, sum, picked);
+//	dfs(idx + 1, sum + list[idx], 1);
+//}
+//int main() {
+//	cin >> N >> S;
+//	list.resize(N);
+//	for (int i = 0; i < N; i++) {
+//		cin >> list[i];
+//	}
+//
+//	dfs(0, 0, 0);
+//	cout << answer;
+//}
+
+////1018 b
+//int main() {
+//	int N, M, answer = MAX;
+//	cin >> N >> M;
+//	vector<vector<char>> list(N, vector<char>(M));
+//
+//	for (int i = 0; i < N; i++) {
+//		for (int j = 0; j < M; j++) {
+//			cin >> list[i][j];
+//		}
+//	}
+//
+//    for (int i = 0; i <= N - 8; i++) {
+//        for (int j = 0; j <= M - 8; j++) {
+//            int count = 0;
+//            for (int y = 0; y < 8; y++) {
+//                for (int x = 0; x < 8; x++) {
+//                    char check;
+//                    if ((y + x) % 2 == 0)
+//                        check = 'B';
+//                    else
+//                        check = 'W';
+//                    if (list[i + y][j + x] != check)
+//                        count++;
+//                }
+//            }
+//            int ans = min(count, 64 - count);
+//            if (ans < answer)
+//                answer = ans;
+//        }
+//    }
+//
+//	cout << abs(answer);
+//}
 
 ////15683 b
 //int N, M, answer = 1000000000;
